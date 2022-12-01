@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

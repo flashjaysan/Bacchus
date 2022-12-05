@@ -6,9 +6,18 @@ namespace Bacchus.DataAccess.DbContext;
 
 public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    public DbSet<UserEntity> Users { get; set; }
+    public DbSet<AddressEntity> Addresses { get; set; }
+    public DbSet<GrapeVarietyEntity> GrapeVarieties { get; set; }
+    public DbSet<OrderEntity> Orders { get; set; }
+    public DbSet<OrderLineEntity> OrderLines { get; set; }
+    public DbSet<OrderStatusEntity> OrderStatuses { get; set; }
+    public DbSet<OrderTypeEntity> OrderTypes { get; set; }
     public DbSet<RoleEntity> Roles { get; set; }
-    public DbSet<UserRoleEntity> UserRoles { get; set; }
+    public DbSet<SupplierEntity> Suppliers { get; set; }
+    public DbSet<UserEntity> Users { get; set; }
+    public DbSet<UserRoleEntity> UsersRoles { get; set; }
+    public DbSet<WineEntity> Wines { get; set; }
+    public DbSet<WineFamilyEntity> WineFamilies { get; set; }
 
     public BacchusDbContext(DbContextOptions<BacchusDbContext> options) : base(options)
     {}

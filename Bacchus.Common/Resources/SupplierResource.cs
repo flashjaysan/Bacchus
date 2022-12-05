@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Resources;
+﻿using Bacchus.Common.Core;
 
-public class SupplierResource
+namespace Bacchus.Common.Resources;
+
+public class SupplierResource : Resource
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string EmailAddress { get; set; }
     public int HomePhoneNumber { get; set; }

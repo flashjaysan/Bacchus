@@ -1,7 +1,8 @@
-﻿namespace Bacchus.Common.Resources;
+﻿using Bacchus.Common.Core;
 
-public class GrapeVarietyResource
+namespace Bacchus.Common.Resources;
+
+public class GrapeVarietyResource : Resource
 {
-    public int Id { get; set; }
     public string Name { get; set; }
 }

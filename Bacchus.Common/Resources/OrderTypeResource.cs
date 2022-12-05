@@ -1,7 +1,8 @@
-﻿namespace Bacchus.Common.Resources;
+﻿using Bacchus.Common.Core;
 
-public class OrderTypeResource
+namespace Bacchus.Common.Resources;
+
+public class OrderTypeResource : Resource
 {
-    public int Id { get; set; }
     public string Name { get; set; }
 }

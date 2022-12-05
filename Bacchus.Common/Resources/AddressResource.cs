@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Resources;
+﻿using Bacchus.Common.Core;
 
-public class AddressResource
+namespace Bacchus.Common.Resources;
+
+public class AddressResource : Resource
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Number { get; set; }
     public string Street { get; set; }

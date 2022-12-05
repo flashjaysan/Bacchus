@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Resources;
+﻿using Bacchus.Common.Core;
 
-public class UserRoleResource
+namespace Bacchus.Common.Resources;
+
+public class UserRoleResource : Resource
 {
-    public int Id { get; set; }
     public int UserId { get; set; }
     public int RoleId { get; set; }
     public UserResource User { get; set; }

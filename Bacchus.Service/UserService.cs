@@ -3,29 +3,29 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Service;
 
-public class UserService : IUserService
+public class UserService : IService<UserResource>
 {
-    Task<UserResource> IUserService.Add(UserResource userResource)
+    public Task<UserResource> Add(UserResource t)
     {
         throw new NotImplementedException();
     }
 
-    Task IUserService.Delete(int id)
+    public Task Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<List<UserResource>> IUserService.GetAll()
+    public Task<List<UserResource>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    Task<UserResource> IUserService.GetItemById(int id)
+    public Task<UserResource> GetItemById(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<UserResource> IUserService.Update(UserResource userResource)
+    public Task<UserResource> Update(UserResource t)
     {
         throw new NotImplementedException();
     }

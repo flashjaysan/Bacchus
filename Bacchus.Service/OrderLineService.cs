@@ -3,29 +3,29 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Service;
 
-public class OrderLineService : IOrderLineService
+public class OrderLineService : IService<OrderLineResource>
 {
-    Task<OrderLineResource> IOrderLineService.Add(OrderLineResource orderLineResource)
+    public Task<OrderLineResource> Add(OrderLineResource t)
     {
         throw new NotImplementedException();
     }
 
-    Task IOrderLineService.Delete(int id)
+    public Task Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<List<OrderLineResource>> IOrderLineService.GetAll()
+    public Task<List<OrderLineResource>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    Task<OrderLineResource> IOrderLineService.GetItemById(int id)
+    public Task<OrderLineResource> GetItemById(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<OrderLineResource> IOrderLineService.Update(OrderLineResource orderLineResource)
+    public Task<OrderLineResource> Update(OrderLineResource t)
     {
         throw new NotImplementedException();
     }

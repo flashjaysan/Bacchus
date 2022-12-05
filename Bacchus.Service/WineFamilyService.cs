@@ -3,29 +3,29 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Service;
 
-public class WineFamilyService : IWineFamilyService
+public class WineFamilyService : IService<WineFamilyResource>
 {
-    Task<WineFamilyResource> IWineFamilyService.Add(WineFamilyResource wineFamilyResource)
+    public Task<WineFamilyResource> Add(WineFamilyResource t)
     {
         throw new NotImplementedException();
     }
 
-    Task IWineFamilyService.Delete(int id)
+    public Task Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<List<WineFamilyResource>> IWineFamilyService.GetAll()
+    public Task<List<WineFamilyResource>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    Task<WineFamilyResource> IWineFamilyService.GetItemById(int id)
+    public Task<WineFamilyResource> GetItemById(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<WineFamilyResource> IWineFamilyService.Update(WineFamilyResource wineFamilyResource)
+    public Task<WineFamilyResource> Update(WineFamilyResource t)
     {
         throw new NotImplementedException();
     }

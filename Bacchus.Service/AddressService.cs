@@ -3,29 +3,29 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Service;
 
-public class AddressService : IAddressService
+public class AddressService : IService<AddressResource>
 {
-    Task<AddressResource> IAddressService.Add(AddressResource addressResource)
+    public Task<AddressResource> Add(AddressResource t)
     {
         throw new NotImplementedException();
     }
 
-    Task IAddressService.Delete(int id)
+    public Task Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<List<AddressResource>> IAddressService.GetAll()
+    public Task<List<AddressResource>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    Task<AddressResource> IAddressService.GetItemById(int id)
+    public Task<AddressResource> GetItemById(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<AddressResource> IAddressService.Update(AddressResource addressResource)
+    public Task<AddressResource> Update(AddressResource t)
     {
         throw new NotImplementedException();
     }

@@ -3,29 +3,29 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Service;
 
-public class SupplierService : ISupplierService
+public class SupplierService : IService<SupplierResource>
 {
-    Task<SupplierResource> ISupplierService.Add(SupplierResource supplierResource)
+    public Task<SupplierResource> Add(SupplierResource t)
     {
         throw new NotImplementedException();
     }
 
-    Task ISupplierService.Delete(int id)
+    public Task Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<List<SupplierResource>> ISupplierService.GetAll()
+    public Task<List<SupplierResource>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    Task<SupplierResource> ISupplierService.GetItemById(int id)
+    public Task<SupplierResource> GetItemById(int id)
     {
         throw new NotImplementedException();
     }
 
-    Task<SupplierResource> ISupplierService.Update(SupplierResource supplierResource)
+    public Task<SupplierResource> Update(SupplierResource t)
     {
         throw new NotImplementedException();
     }

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UnitOfWork\Repositories\" />
+    <ProjectReference Include="..\Bacchus.Common\Bacchus.Common.csproj" />
   </ItemGroup>
 
 </Project>

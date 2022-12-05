@@ -1,32 +1,72 @@
-﻿using Bacchus.Business;
+﻿using AutoMapper;
+using Bacchus.Business;
+using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
+using Bacchus.DataAccess.UnitOfWork.Repositories;
+using Bacchus.DataAccess.UnitOfWork;
 
 namespace Bacchus.Service;
 
 public class AddressService : IService<AddressResource>
 {
-    public Task<AddressResource> Add(AddressResource t)
+    private readonly IRepository<AddressEntity> _repository;
+    private readonly IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public AddressService(IRepository<AddressEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
-        throw new NotImplementedException();
+        _repository = repository;
+        _mapper = mapper;
+        _unitOfWork = unitOfWork;
     }
 
-    public Task Delete(int id)
+    public async Task<AddressResource> Add(AddressResource addressResource)
     {
-        throw new NotImplementedException();
+        AddressEntity newAddress = _mapper.Map<AddressEntity>(addressResource);
+        _repository.Add(newAddress);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        return addressResource;
+    }
+
+    public async Task Delete(int id)
+    {
+        AddressEntity addressEntity = _repository.GetOne(id);
+
+        if (addressEntity != null)
+        {
+            _repository.Remove(addressEntity);
+        }
+
+        await _unitOfWork.SaveIntoDbContextAsync();
     }
 
     public Task<List<AddressResource>> GetAll()
     {
-        throw new NotImplementedException();
+        List<AddressEntity> addressEntities = _repository.GetAll();
+        List<AddressResource> addressResources = _mapper.Map<List<AddressResource>>(addressEntities);
+        return Task.FromResult(addressResources);
     }
 
     public Task<AddressResource> GetItemById(int id)
     {
-        throw new NotImplementedException();
+        AddressEntity addressEntity = _repository.GetOne(id);
+        AddressResource addressResource = _mapper.Map<AddressEntity, AddressResource>(addressEntity);
+        return Task.FromResult(addressResource);
     }
 
-    public Task<AddressResource> Update(AddressResource t)
+    public async Task<AddressResource> Update(AddressResource addressResource)
     {
-        throw new NotImplementedException();
+        AddressEntity addressEntity = _repository.GetOne(addressResource.Id);
+
+        if (addressEntity == null)
+        {
+            throw new Exception("Address doesn't exist.");
+        }
+
+        AddressEntity updatedAddressEntity = _mapper.Map(addressResource, addressEntity);
+        _repository.Update(updatedAddressEntity);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        AddressResource updatedAddressResource = _mapper.Map<AddressEntity, AddressResource>(updatedAddressEntity);
+        return updatedAddressResource;
     }
 }

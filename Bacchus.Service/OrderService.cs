@@ -1,32 +1,72 @@
-﻿using Bacchus.Business;
+﻿using AutoMapper;
+using Bacchus.Business;
+using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
+using Bacchus.DataAccess.UnitOfWork.Repositories;
+using Bacchus.DataAccess.UnitOfWork;
 
 namespace Bacchus.Service;
 
 public class OrderService : IService<OrderResource>
 {
-    public Task<OrderResource> Add(OrderResource t)
+    private readonly IRepository<OrderEntity> _repository;
+    private readonly IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public OrderService(IRepository<OrderEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
-        throw new NotImplementedException();
+        _repository = repository;
+        _mapper = mapper;
+        _unitOfWork = unitOfWork;
     }
 
-    public Task Delete(int id)
+    public async Task<OrderResource> Add(OrderResource orderResource)
     {
-        throw new NotImplementedException();
+        OrderEntity newOrder = _mapper.Map<OrderEntity>(orderResource);
+        _repository.Add(newOrder);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        return orderResource;
+    }
+
+    public async Task Delete(int id)
+    {
+        OrderEntity orderEntity = _repository.GetOne(id);
+
+        if (orderEntity != null)
+        {
+            _repository.Remove(orderEntity);
+        }
+
+        await _unitOfWork.SaveIntoDbContextAsync();
     }
 
     public Task<List<OrderResource>> GetAll()
     {
-        throw new NotImplementedException();
+        List<OrderEntity> orderEntities = _repository.GetAll();
+        List<OrderResource> orderResources = _mapper.Map<List<OrderResource>>(orderEntities);
+        return Task.FromResult(orderResources);
     }
 
     public Task<OrderResource> GetItemById(int id)
     {
-        throw new NotImplementedException();
+        OrderEntity orderEntity = _repository.GetOne(id);
+        OrderResource orderResource = _mapper.Map<OrderEntity, OrderResource>(orderEntity);
+        return Task.FromResult(orderResource);
     }
 
-    public Task<OrderResource> Update(OrderResource t)
+    public async Task<OrderResource> Update(OrderResource orderResource)
     {
-        throw new NotImplementedException();
+        OrderEntity orderEntity = _repository.GetOne(orderResource.Id);
+
+        if (orderEntity == null)
+        {
+            throw new Exception("Order doesn't exist.");
+        }
+
+        OrderEntity updatedOrderEntity = _mapper.Map(orderResource, orderEntity);
+        _repository.Update(updatedOrderEntity);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        OrderResource updatedOrderResource = _mapper.Map<OrderEntity, OrderResource>(updatedOrderEntity);
+        return updatedOrderResource;
     }
 }

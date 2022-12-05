@@ -1,32 +1,72 @@
-﻿using Bacchus.Business;
+﻿using AutoMapper;
+using Bacchus.Business;
+using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
+using Bacchus.DataAccess.UnitOfWork.Repositories;
+using Bacchus.DataAccess.UnitOfWork;
 
 namespace Bacchus.Service;
 
 public class UserService : IService<UserResource>
 {
-    public Task<UserResource> Add(UserResource t)
+    private readonly IRepository<UserEntity> _repository;
+    private readonly IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public UserService(IRepository<UserEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
-        throw new NotImplementedException();
+        _repository = repository;
+        _mapper = mapper;
+        _unitOfWork = unitOfWork;
     }
 
-    public Task Delete(int id)
+    public async Task<UserResource> Add(UserResource userResource)
     {
-        throw new NotImplementedException();
+        UserEntity newUser = _mapper.Map<UserEntity>(userResource);
+        _repository.Add(newUser);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        return userResource;
+    }
+
+    public async Task Delete(int id)
+    {
+        UserEntity userEntity = _repository.GetOne(id);
+
+        if (userEntity != null)
+        {
+            _repository.Remove(userEntity);
+        }
+
+        await _unitOfWork.SaveIntoDbContextAsync();
     }
 
     public Task<List<UserResource>> GetAll()
     {
-        throw new NotImplementedException();
+        List<UserEntity> userEntities = _repository.GetAll();
+        List<UserResource> userResources = _mapper.Map<List<UserResource>>(userEntities);
+        return Task.FromResult(userResources);
     }
 
     public Task<UserResource> GetItemById(int id)
     {
-        throw new NotImplementedException();
+        UserEntity userEntity = _repository.GetOne(id);
+        UserResource userResource = _mapper.Map<UserEntity, UserResource>(userEntity);
+        return Task.FromResult(userResource);
     }
 
-    public Task<UserResource> Update(UserResource t)
+    public async Task<UserResource> Update(UserResource userResource)
     {
-        throw new NotImplementedException();
+        UserEntity userEntity = _repository.GetOne(userResource.Id);
+
+        if (userEntity == null)
+        {
+            throw new Exception("User doesn't exist.");
+        }
+
+        UserEntity updatedUserEntity = _mapper.Map(userResource, userEntity);
+        _repository.Update(updatedUserEntity);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        UserResource updatedUserResource = _mapper.Map<UserEntity, UserResource>(updatedUserEntity);
+        return updatedUserResource;
     }
 }

@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Bacchus.Business\Bacchus.Business.csproj" />
     <ProjectReference Include="..\Bacchus.Common\Bacchus.Common.csproj" />
+    <ProjectReference Include="..\Bacchus.DataAccess\Bacchus.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

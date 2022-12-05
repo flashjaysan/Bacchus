@@ -1,32 +1,72 @@
-﻿using Bacchus.Business;
+﻿using AutoMapper;
+using Bacchus.Business;
+using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
+using Bacchus.DataAccess.UnitOfWork.Repositories;
+using Bacchus.DataAccess.UnitOfWork;
 
 namespace Bacchus.Service;
 
 public class OrderLineService : IService<OrderLineResource>
 {
-    public Task<OrderLineResource> Add(OrderLineResource t)
+    private readonly IRepository<OrderLineEntity> _repository;
+    private readonly IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public OrderLineService(IRepository<OrderLineEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
-        throw new NotImplementedException();
+        _repository = repository;
+        _mapper = mapper;
+        _unitOfWork = unitOfWork;
     }
 
-    public Task Delete(int id)
+    public async Task<OrderLineResource> Add(OrderLineResource orderLineResource)
     {
-        throw new NotImplementedException();
+        OrderLineEntity newOrderLine = _mapper.Map<OrderLineEntity>(orderLineResource);
+        _repository.Add(newOrderLine);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        return orderLineResource;
+    }
+
+    public async Task Delete(int id)
+    {
+        OrderLineEntity orderLineEntity = _repository.GetOne(id);
+
+        if (orderLineEntity != null)
+        {
+            _repository.Remove(orderLineEntity);
+        }
+
+        await _unitOfWork.SaveIntoDbContextAsync();
     }
 
     public Task<List<OrderLineResource>> GetAll()
     {
-        throw new NotImplementedException();
+        List<OrderLineEntity> orderLineEntities = _repository.GetAll();
+        List<OrderLineResource> orderLineResources = _mapper.Map<List<OrderLineResource>>(orderLineEntities);
+        return Task.FromResult(orderLineResources);
     }
 
     public Task<OrderLineResource> GetItemById(int id)
     {
-        throw new NotImplementedException();
+        OrderLineEntity orderLineEntity = _repository.GetOne(id);
+        OrderLineResource orderLineResource = _mapper.Map<OrderLineEntity, OrderLineResource>(orderLineEntity);
+        return Task.FromResult(orderLineResource);
     }
 
-    public Task<OrderLineResource> Update(OrderLineResource t)
+    public async Task<OrderLineResource> Update(OrderLineResource orderLineResource)
     {
-        throw new NotImplementedException();
+        OrderLineEntity orderLineEntity = _repository.GetOne(orderLineResource.Id);
+
+        if (orderLineEntity == null)
+        {
+            throw new Exception("OrderLine doesn't exist.");
+        }
+
+        OrderLineEntity updatedOrderLineEntity = _mapper.Map(orderLineResource, orderLineEntity);
+        _repository.Update(updatedOrderLineEntity);
+        await _unitOfWork.SaveIntoDbContextAsync();
+        OrderLineResource updatedOrderLineResource = _mapper.Map<OrderLineEntity, OrderLineResource>(updatedOrderLineEntity);
+        return updatedOrderLineResource;
     }
 }

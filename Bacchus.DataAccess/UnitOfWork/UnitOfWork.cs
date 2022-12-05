@@ -1,9 +1,18 @@
-﻿namespace Bacchus.DataAccess.UnitOfWork;
+﻿using Bacchus.DataAccess.DbContext;
+
+namespace Bacchus.DataAccess.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork
 {
-    public Task SaveIntoDbContextAsync()
+    private readonly BacchusDbContext _dbContext;
+
+    public UnitOfWork(BacchusDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
+    }
+
+    public async Task SaveIntoDbContextAsync()
+    {
+        await _dbContext.SaveChangesAsync();
     }
 }

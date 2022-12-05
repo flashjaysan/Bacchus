@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class SupplierEntity
+namespace Bacchus.Common.Entities;
+
+public class SupplierEntity : Entity
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string EmailAddress { get; set; }
     public int HomePhoneNumber { get; set; }

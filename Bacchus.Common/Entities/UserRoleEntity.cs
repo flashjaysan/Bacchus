@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class UserRoleEntity
+namespace Bacchus.Common.Entities;
+
+public class UserRoleEntity : Entity
 {
-    public int Id { get; set; }
     public int UserId { get; set; }
     public int RoleId { get; set; }
     public UserEntity User { get; set; }

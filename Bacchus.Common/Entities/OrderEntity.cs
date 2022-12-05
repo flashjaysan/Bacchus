@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class OrderEntity
+namespace Bacchus.Common.Entities;
+
+public class OrderEntity : Entity
 {
-    public int Id { get; set; }
     public UserEntity User { get; set; }
     public AddressEntity DeliveryAddress { get; set; }
     public OrderTypeEntity Type { get; set; }

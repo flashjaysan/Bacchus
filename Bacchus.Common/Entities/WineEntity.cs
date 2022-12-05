@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class WineEntity
+namespace Bacchus.Common.Entities;
+
+public class WineEntity : Entity
 {
-    public int Id { get; set; }
     public int Year { get; set; }
     public string Domain { get; set; }
     public string Description { get; set; }

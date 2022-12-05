@@ -1,8 +1,9 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class AddressEntity
+namespace Bacchus.Common.Entities;
+
+public class AddressEntity : Entity
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Number { get; set; }
     public string Street { get; set; }

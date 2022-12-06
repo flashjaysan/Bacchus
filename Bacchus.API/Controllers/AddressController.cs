@@ -14,4 +14,17 @@ public class AddressController : Controller
     {
         _addressService = addressService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        AddressResource addressResource = await _addressService.GetItemById(id);
+
+        if (addressResource != null)
+        {
+            return Ok(addressResource);
+        }
+
+        return NotFound();
+    }
 }

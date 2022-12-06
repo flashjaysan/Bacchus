@@ -14,4 +14,17 @@ public class SupplierController : Controller
     {
         _supplierService = supplierService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        SupplierResource supplierResource = await _supplierService.GetItemById(id);
+
+        if (supplierResource != null)
+        {
+            return Ok(supplierResource);
+        }
+
+        return NotFound();
+    }
 }

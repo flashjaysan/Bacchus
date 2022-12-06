@@ -14,4 +14,17 @@ public class OrderController : Controller
     {
         _orderService = orderService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        OrderResource orderResource = await _orderService.GetItemById(id);
+
+        if (orderResource != null)
+        {
+            return Ok(orderResource);
+        }
+
+        return NotFound();
+    }
 }

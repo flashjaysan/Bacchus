@@ -14,4 +14,17 @@ public class UserController : Controller
     {
         _userService = userService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        UserResource userResource = await _userService.GetItemById(id);
+
+        if (userResource != null)
+        {
+            return Ok(userResource);
+        }
+
+        return NotFound();
+    }
 }

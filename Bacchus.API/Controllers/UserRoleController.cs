@@ -14,4 +14,17 @@ public class UserRoleController : Controller
     {
         _userRoleService = userRoleService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        UserRoleResource userRoleResource = await _userRoleService.GetItemById(id);
+
+        if (userRoleResource != null)
+        {
+            return Ok(userRoleResource);
+        }
+
+        return NotFound();
+    }
 }

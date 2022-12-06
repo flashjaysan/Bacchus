@@ -14,4 +14,17 @@ public class OrderTypeController : Controller
     {
         _orderTypeService = orderTypeService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        OrderTypeResource orderTypeResource = await _orderTypeService.GetItemById(id);
+
+        if (orderTypeResource != null)
+        {
+            return Ok(orderTypeResource);
+        }
+
+        return NotFound();
+    }
 }

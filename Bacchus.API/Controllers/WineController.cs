@@ -14,4 +14,17 @@ public class WineController : Controller
     {
         _wineService = wineService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        WineResource wineResource = await _wineService.GetItemById(id);
+
+        if (wineResource != null)
+        {
+            return Ok(wineResource);
+        }
+
+        return NotFound();
+    }
 }

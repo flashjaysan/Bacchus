@@ -14,4 +14,17 @@ public class GrapeVarietyController : Controller
     {
         _grapeVarietyService = grapeVarietyService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        GrapeVarietyResource grapeVarietyResource = await _grapeVarietyService.GetItemById(id);
+
+        if (grapeVarietyResource != null)
+        {
+            return Ok(grapeVarietyResource);
+        }
+
+        return NotFound();
+    }
 }

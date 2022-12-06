@@ -14,4 +14,17 @@ public class WineFamilyController : Controller
     {
         _wineFamilyService = wineFamilyService;
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemById(int id)
+    {
+        WineFamilyResource wineFamilyResource = await _wineFamilyService.GetItemById(id);
+
+        if (wineFamilyResource != null)
+        {
+            return Ok(wineFamilyResource);
+        }
+
+        return NotFound();
+    }
 }

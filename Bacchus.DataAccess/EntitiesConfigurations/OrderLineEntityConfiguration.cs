@@ -8,6 +8,8 @@ public class OrderLineEntityConfiguration : IEntityTypeConfiguration<OrderLineEn
 {
     public void Configure(EntityTypeBuilder<OrderLineEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(orderLineEntity => orderLineEntity.Id);
+        builder.ToTable("OrderLines");
+        builder.Property(orderLineEntity => orderLineEntity.Id).ValueGeneratedOnAdd();
     }
 }

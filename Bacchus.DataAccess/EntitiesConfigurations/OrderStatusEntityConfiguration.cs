@@ -8,6 +8,8 @@ public class OrderStatusEntityConfiguration : IEntityTypeConfiguration<OrderStat
 {
     public void Configure(EntityTypeBuilder<OrderStatusEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(orderStatusEntity => orderStatusEntity.Id);
+        builder.ToTable("OrderStatuses");
+        builder.Property(orderStatusEntity => orderStatusEntity.Id).ValueGeneratedOnAdd();
     }
 }

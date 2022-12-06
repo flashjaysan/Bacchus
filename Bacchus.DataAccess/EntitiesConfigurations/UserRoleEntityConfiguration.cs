@@ -8,6 +8,8 @@ public class UserRoleEntityConfiguration : IEntityTypeConfiguration<UserRoleEnti
 {
     public void Configure(EntityTypeBuilder<UserRoleEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(userRoleEntity => userRoleEntity.Id);
+        builder.ToTable("UsersRoles");
+        builder.Property(userRoleEntity => userRoleEntity.Id).ValueGeneratedOnAdd();
     }
 }

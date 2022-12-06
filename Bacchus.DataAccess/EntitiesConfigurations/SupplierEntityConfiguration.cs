@@ -8,6 +8,8 @@ public class SupplierEntityConfiguration : IEntityTypeConfiguration<SupplierEnti
 {
     public void Configure(EntityTypeBuilder<SupplierEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(supplierEntity => supplierEntity.Id);
+        builder.ToTable("Suppliers");
+        builder.Property(supplierEntity => supplierEntity.Id).ValueGeneratedOnAdd();
     }
 }

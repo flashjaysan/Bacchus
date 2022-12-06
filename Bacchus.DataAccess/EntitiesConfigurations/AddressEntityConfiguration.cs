@@ -8,6 +8,8 @@ public class AddressEntityConfiguration : IEntityTypeConfiguration<AddressEntity
 {
     public void Configure(EntityTypeBuilder<AddressEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(addressEntity => addressEntity.Id);
+        builder.ToTable("Addresses");
+        builder.Property(addressEntity => addressEntity.Id).ValueGeneratedOnAdd();
     }
 }

@@ -8,6 +8,8 @@ public class GrapeVarietyEntityConfiguration : IEntityTypeConfiguration<GrapeVar
 {
     public void Configure(EntityTypeBuilder<GrapeVarietyEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(grapeVarietyEntity => grapeVarietyEntity.Id);
+        builder.ToTable("GrapeVarieties");
+        builder.Property(grapeVarietyEntity => grapeVarietyEntity.Id).ValueGeneratedOnAdd();
     }
 }

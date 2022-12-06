@@ -8,6 +8,8 @@ public class WineEntityConfiguration : IEntityTypeConfiguration<WineEntity>
 {
     public void Configure(EntityTypeBuilder<WineEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(wineEntity => wineEntity.Id);
+        builder.ToTable("Wines");
+        builder.Property(wineEntity => wineEntity.Id).ValueGeneratedOnAdd();
     }
 }

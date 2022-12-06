@@ -8,6 +8,8 @@ public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
 {
     public void Configure(EntityTypeBuilder<UserEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(userEntity => userEntity.Id);
+        builder.ToTable("Users");
+        builder.Property(userEntity => userEntity.Id).ValueGeneratedOnAdd();
     }
 }

@@ -8,6 +8,8 @@ public class RoleEntityConfiguration : IEntityTypeConfiguration<RoleEntity>
 {
     public void Configure(EntityTypeBuilder<RoleEntity> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(roleEntity => roleEntity.Id);
+        builder.ToTable("Roles");
+        builder.Property(roleEntity => roleEntity.Id).ValueGeneratedOnAdd();
     }
 }

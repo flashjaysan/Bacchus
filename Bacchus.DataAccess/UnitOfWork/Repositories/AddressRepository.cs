@@ -4,7 +4,7 @@ namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class AddressRepository : IRepository<AddressEntity>
 {
-    public void Add(AddressEntity t)
+    public void Add(AddressEntity addressEntity)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,12 @@ public class AddressRepository : IRepository<AddressEntity>
         throw new NotImplementedException();
     }
 
-    public void Remove(AddressEntity t)
+    public void Remove(AddressEntity addressEntity)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(AddressEntity t)
+    public void Update(AddressEntity addressEntity)
     {
         throw new NotImplementedException();
     }

@@ -4,7 +4,7 @@ namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class WineFamilyRepository : IRepository<WineFamilyEntity>
 {
-    public void Add(WineFamilyEntity t)
+    public void Add(WineFamilyEntity wineFamilyEntity)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,12 @@ public class WineFamilyRepository : IRepository<WineFamilyEntity>
         throw new NotImplementedException();
     }
 
-    public void Remove(WineFamilyEntity t)
+    public void Remove(WineFamilyEntity wineFamilyEntity)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(WineFamilyEntity t)
+    public void Update(WineFamilyEntity wineFamilyEntity)
     {
         throw new NotImplementedException();
     }

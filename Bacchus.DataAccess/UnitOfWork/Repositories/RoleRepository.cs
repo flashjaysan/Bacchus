@@ -4,7 +4,7 @@ namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class RoleRepository : IRepository<RoleEntity>
 {
-    public void Add(RoleEntity t)
+    public void Add(RoleEntity roleEntity)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,12 @@ public class RoleRepository : IRepository<RoleEntity>
         throw new NotImplementedException();
     }
 
-    public void Remove(RoleEntity t)
+    public void Remove(RoleEntity roleEntity)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(RoleEntity t)
+    public void Update(RoleEntity roleEntity)
     {
         throw new NotImplementedException();
     }

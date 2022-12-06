@@ -4,7 +4,7 @@ namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class OrderStatusRepository : IRepository<OrderStatusEntity>
 {
-    public void Add(OrderStatusEntity t)
+    public void Add(OrderStatusEntity orderStatusEntity)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,12 @@ public class OrderStatusRepository : IRepository<OrderStatusEntity>
         throw new NotImplementedException();
     }
 
-    public void Remove(OrderStatusEntity t)
+    public void Remove(OrderStatusEntity orderStatusEntity)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(OrderStatusEntity t)
+    public void Update(OrderStatusEntity orderStatusEntity)
     {
         throw new NotImplementedException();
     }

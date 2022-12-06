@@ -4,7 +4,7 @@ namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class SupplierRepository : IRepository<SupplierEntity>
 {
-    public void Add(SupplierEntity t)
+    public void Add(SupplierEntity supplierEntity)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,12 @@ public class SupplierRepository : IRepository<SupplierEntity>
         throw new NotImplementedException();
     }
 
-    public void Remove(SupplierEntity t)
+    public void Remove(SupplierEntity supplierEntity)
     {
         throw new NotImplementedException();
     }
 
-    public void Update(SupplierEntity t)
+    public void Update(SupplierEntity supplierEntity)
     {
         throw new NotImplementedException();
     }

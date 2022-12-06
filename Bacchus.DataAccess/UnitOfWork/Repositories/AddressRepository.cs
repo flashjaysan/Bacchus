@@ -20,7 +20,7 @@ public class AddressRepository : IRepository<AddressEntity>
 
     public List<AddressEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.Addresses.ToList();
     }
 
     public AddressEntity GetOne(int id)

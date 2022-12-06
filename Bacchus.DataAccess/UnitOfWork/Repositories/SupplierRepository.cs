@@ -20,7 +20,7 @@ public class SupplierRepository : IRepository<SupplierEntity>
 
     public List<SupplierEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.Suppliers.ToList();
     }
 
     public SupplierEntity GetOne(int id)

@@ -20,7 +20,7 @@ public class UserRepository : IRepository<UserEntity>
 
     public List<UserEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.Users.ToList();
     }
 
     public UserEntity GetOne(int id)

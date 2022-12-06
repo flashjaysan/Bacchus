@@ -20,7 +20,7 @@ public class GrapeVarietyRepository : IRepository<GrapeVarietyEntity>
 
     public List<GrapeVarietyEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.GrapeVarieties.ToList();
     }
 
     public GrapeVarietyEntity GetOne(int id)

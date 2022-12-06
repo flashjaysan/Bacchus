@@ -20,7 +20,7 @@ public class UserRoleRepository : IRepository<UserRoleEntity>
 
     public List<UserRoleEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.UsersRoles.ToList();
     }
 
     public UserRoleEntity GetOne(int id)

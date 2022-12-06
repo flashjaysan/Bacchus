@@ -20,7 +20,7 @@ public class WineRepository : IRepository<WineEntity>
 
     public List<WineEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.Wines.ToList();
     }
 
     public WineEntity GetOne(int id)

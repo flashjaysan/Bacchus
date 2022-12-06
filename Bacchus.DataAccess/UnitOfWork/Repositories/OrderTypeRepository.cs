@@ -20,7 +20,7 @@ public class OrderTypeRepository : IRepository<OrderTypeEntity>
 
     public List<OrderTypeEntity> GetAll()
     {
-        throw new NotImplementedException();
+        return _dbContext.OrderTypes.ToList();
     }
 
     public OrderTypeEntity GetOne(int id)

@@ -30,11 +30,11 @@ public class UserRepository : IRepository<UserEntity>
 
     public void Remove(UserEntity userEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Users.Remove(userEntity);
     }
 
     public void Update(UserEntity userEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Users.Update(userEntity);
     }
 }

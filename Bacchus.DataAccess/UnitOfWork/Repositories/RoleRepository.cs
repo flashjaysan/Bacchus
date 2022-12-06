@@ -30,11 +30,11 @@ public class RoleRepository : IRepository<RoleEntity>
 
     public void Remove(RoleEntity roleEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Roles.Remove(roleEntity);
     }
 
     public void Update(RoleEntity roleEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Roles.Update(roleEntity);
     }
 }

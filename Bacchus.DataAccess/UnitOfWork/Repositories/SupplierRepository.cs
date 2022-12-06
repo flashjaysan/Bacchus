@@ -30,11 +30,11 @@ public class SupplierRepository : IRepository<SupplierEntity>
 
     public void Remove(SupplierEntity supplierEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Suppliers.Remove(supplierEntity);
     }
 
     public void Update(SupplierEntity supplierEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Suppliers.Update(supplierEntity);
     }
 }

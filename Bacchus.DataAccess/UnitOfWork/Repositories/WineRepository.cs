@@ -30,11 +30,11 @@ public class WineRepository : IRepository<WineEntity>
 
     public void Remove(WineEntity wineEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Wines.Remove(wineEntity);
     }
 
     public void Update(WineEntity wineEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Wines.Update(wineEntity);
     }
 }

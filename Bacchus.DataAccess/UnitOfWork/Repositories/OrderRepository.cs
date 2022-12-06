@@ -30,11 +30,11 @@ public class OrderRepository : IRepository<OrderEntity>
 
     public void Remove(OrderEntity orderEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Orders.Remove(orderEntity);
     }
 
     public void Update(OrderEntity orderEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Orders.Update(orderEntity);
     }
 }

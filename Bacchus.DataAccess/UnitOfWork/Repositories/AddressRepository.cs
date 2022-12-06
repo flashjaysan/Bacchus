@@ -30,11 +30,11 @@ public class AddressRepository : IRepository<AddressEntity>
 
     public void Remove(AddressEntity addressEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Addresses.Remove(addressEntity);
     }
 
     public void Update(AddressEntity addressEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Addresses.Update(addressEntity);
     }
 }

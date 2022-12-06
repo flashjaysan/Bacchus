@@ -1,5 +1,6 @@
 ﻿using Bacchus.Common.Entities;
 using Bacchus.DataAccess.DbContext;
+using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
@@ -14,7 +15,7 @@ public class AddressRepository : IRepository<AddressEntity>
 
     public void Add(AddressEntity addressEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Addresses.Add(addressEntity);
     }
 
     public List<AddressEntity> GetAll()

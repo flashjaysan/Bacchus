@@ -1,5 +1,6 @@
 ﻿using Bacchus.Common.Entities;
 using Bacchus.DataAccess.DbContext;
+using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
@@ -14,7 +15,7 @@ public class RoleRepository : IRepository<RoleEntity>
 
     public void Add(RoleEntity roleEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Roles.Add(roleEntity);
     }
 
     public List<RoleEntity> GetAll()

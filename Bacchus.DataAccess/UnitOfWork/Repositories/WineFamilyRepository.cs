@@ -1,5 +1,6 @@
 ﻿using Bacchus.Common.Entities;
 using Bacchus.DataAccess.DbContext;
+using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
@@ -14,7 +15,7 @@ public class WineFamilyRepository : IRepository<WineFamilyEntity>
 
     public void Add(WineFamilyEntity wineFamilyEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.WineFamilies.Add(wineFamilyEntity);
     }
 
     public List<WineFamilyEntity> GetAll()

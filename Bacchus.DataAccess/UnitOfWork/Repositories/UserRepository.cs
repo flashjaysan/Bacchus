@@ -1,5 +1,6 @@
 ﻿using Bacchus.Common.Entities;
 using Bacchus.DataAccess.DbContext;
+using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
@@ -14,7 +15,7 @@ public class UserRepository : IRepository<UserEntity>
 
     public void Add(UserEntity userEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.Users.Add(userEntity);
     }
 
     public List<UserEntity> GetAll()

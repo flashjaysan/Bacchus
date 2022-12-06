@@ -1,5 +1,6 @@
 ﻿using Bacchus.Common.Entities;
 using Bacchus.DataAccess.DbContext;
+using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
@@ -14,7 +15,7 @@ public class OrderTypeRepository : IRepository<OrderTypeEntity>
 
     public void Add(OrderTypeEntity orderTypeEntity)
     {
-        throw new NotImplementedException();
+        _dbContext.OrderTypes.Add(orderTypeEntity);
     }
 
     public List<OrderTypeEntity> GetAll()

@@ -25,7 +25,7 @@ public class GrapeVarietyRepository : IRepository<GrapeVarietyEntity>
 
     public GrapeVarietyEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.GrapeVarieties.FirstOrDefault(grapeVariety => grapeVariety.Id == id);
     }
 
     public void Remove(GrapeVarietyEntity grapeVarietyEntity)

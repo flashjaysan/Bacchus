@@ -25,7 +25,7 @@ public class WineRepository : IRepository<WineEntity>
 
     public WineEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Wines.FirstOrDefault(wine => wine.Id == id);
     }
 
     public void Remove(WineEntity wineEntity)

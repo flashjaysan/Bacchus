@@ -25,7 +25,7 @@ public class OrderStatusRepository : IRepository<OrderStatusEntity>
 
     public OrderStatusEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.OrderStatuses.FirstOrDefault(orderStatus => orderStatus.Id == id);
     }
 
     public void Remove(OrderStatusEntity orderStatusEntity)

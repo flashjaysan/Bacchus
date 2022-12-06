@@ -25,7 +25,7 @@ public class SupplierRepository : IRepository<SupplierEntity>
 
     public SupplierEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Suppliers.FirstOrDefault(supplier => supplier.Id == id);
     }
 
     public void Remove(SupplierEntity supplierEntity)

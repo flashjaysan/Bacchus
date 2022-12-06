@@ -25,7 +25,7 @@ public class UserRepository : IRepository<UserEntity>
 
     public UserEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Users.FirstOrDefault(user => user.Id == id);
     }
 
     public void Remove(UserEntity userEntity)

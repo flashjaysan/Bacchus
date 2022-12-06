@@ -25,7 +25,7 @@ public class AddressRepository : IRepository<AddressEntity>
 
     public AddressEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Addresses.FirstOrDefault(address => address.Id == id);
     }
 
     public void Remove(AddressEntity addressEntity)

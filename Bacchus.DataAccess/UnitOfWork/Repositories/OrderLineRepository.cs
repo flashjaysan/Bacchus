@@ -25,7 +25,7 @@ public class OrderLineRepository : IRepository<OrderLineEntity>
 
     public OrderLineEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.OrderLines.FirstOrDefault(orderLine => orderLine.Id == id);
     }
 
     public void Remove(OrderLineEntity orderLineEntity)

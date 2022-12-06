@@ -25,7 +25,7 @@ public class RoleRepository : IRepository<RoleEntity>
 
     public RoleEntity GetOne(int id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Roles.FirstOrDefault(role => role.Id == id);
     }
 
     public void Remove(RoleEntity roleEntity)

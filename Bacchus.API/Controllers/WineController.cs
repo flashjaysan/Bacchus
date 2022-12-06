@@ -16,15 +16,32 @@ public class WineController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<WineResource> GetItemById(int id)
     {
-        WineResource wineResource = await _wineService.GetItemById(id);
+        return await _wineService.GetItemById(id);
+    }
 
-        if (wineResource != null)
-        {
-            return Ok(wineResource);
-        }
+    [HttpGet]
+    public async Task<List<WineResource>> GetAll()
+    {
+        return await _wineService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<WineResource> Add(WineResource wineResource)
+    {
+        return await _wineService.Add(wineResource);
+    }
+
+    [HttpPut]
+    public async Task<WineResource> Update(WineResource wineResource)
+    {
+        return await _wineService.Update(wineResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _wineService.Delete(id);
     }
 }

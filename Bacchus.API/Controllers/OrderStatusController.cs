@@ -16,15 +16,32 @@ public class OrderStatusController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<OrderStatusResource> GetItemById(int id)
     {
-        OrderStatusResource orderStatusResource = await _orderStatusService.GetItemById(id);
+        return await _orderStatusService.GetItemById(id);
+    }
 
-        if (orderStatusResource != null)
-        {
-            return Ok(orderStatusResource);
-        }
+    [HttpGet]
+    public async Task<List<OrderStatusResource>> GetAll()
+    {
+        return await _orderStatusService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<OrderStatusResource> Add(OrderStatusResource orderStatusResource)
+    {
+        return await _orderStatusService.Add(orderStatusResource);
+    }
+
+    [HttpPut]
+    public async Task<OrderStatusResource> Update(OrderStatusResource orderStatusResource)
+    {
+        return await _orderStatusService.Update(orderStatusResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _orderStatusService.Delete(id);
     }
 }

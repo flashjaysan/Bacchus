@@ -16,15 +16,32 @@ public class UserController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<UserResource> GetItemById(int id)
     {
-        UserResource userResource = await _userService.GetItemById(id);
+        return await _userService.GetItemById(id);
+    }
 
-        if (userResource != null)
-        {
-            return Ok(userResource);
-        }
+    [HttpGet]
+    public async Task<List<UserResource>> GetAll()
+    {
+        return await _userService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<UserResource> Add(UserResource userResource)
+    {
+        return await _userService.Add(userResource);
+    }
+
+    [HttpPut]
+    public async Task<UserResource> Update(UserResource userResource)
+    {
+        return await _userService.Update(userResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _userService.Delete(id);
     }
 }

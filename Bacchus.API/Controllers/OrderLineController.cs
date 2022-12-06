@@ -16,15 +16,32 @@ public class OrderLineController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<OrderLineResource> GetItemById(int id)
     {
-        OrderLineResource orderLineResource = await _orderLineService.GetItemById(id);
+        return await _orderLineService.GetItemById(id);
+    }
 
-        if (orderLineResource != null)
-        {
-            return Ok(orderLineResource);
-        }
+    [HttpGet]
+    public async Task<List<OrderLineResource>> GetAll()
+    {
+        return await _orderLineService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<OrderLineResource> Add(OrderLineResource orderLineResource)
+    {
+        return await _orderLineService.Add(orderLineResource);
+    }
+
+    [HttpPut]
+    public async Task<OrderLineResource> Update(OrderLineResource orderLineResource)
+    {
+        return await _orderLineService.Update(orderLineResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _orderLineService.Delete(id);
     }
 }

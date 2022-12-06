@@ -16,15 +16,32 @@ public class RoleController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<RoleResource> GetItemById(int id)
     {
-        RoleResource roleResource = await _roleService.GetItemById(id);
+        return await _roleService.GetItemById(id);
+    }
 
-        if (roleResource != null)
-        {
-            return Ok(roleResource);
-        }
+    [HttpGet]
+    public async Task<List<RoleResource>> GetAll()
+    {
+        return await _roleService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<RoleResource> Add(RoleResource roleResource)
+    {
+        return await _roleService.Add(roleResource);
+    }
+
+    [HttpPut]
+    public async Task<RoleResource> Update(RoleResource roleResource)
+    {
+        return await _roleService.Update(roleResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _roleService.Delete(id);
     }
 }

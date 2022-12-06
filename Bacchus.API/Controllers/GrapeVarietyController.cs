@@ -16,15 +16,32 @@ public class GrapeVarietyController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<GrapeVarietyResource> GetItemById(int id)
     {
-        GrapeVarietyResource grapeVarietyResource = await _grapeVarietyService.GetItemById(id);
+        return await _grapeVarietyService.GetItemById(id);
+    }
 
-        if (grapeVarietyResource != null)
-        {
-            return Ok(grapeVarietyResource);
-        }
+    [HttpGet]
+    public async Task<List<GrapeVarietyResource>> GetAll()
+    {
+        return await _grapeVarietyService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<GrapeVarietyResource> Add(GrapeVarietyResource grapeVarietyResource)
+    {
+        return await _grapeVarietyService.Add(grapeVarietyResource);
+    }
+
+    [HttpPut]
+    public async Task<GrapeVarietyResource> Update(GrapeVarietyResource grapeVarietyResource)
+    {
+        return await _grapeVarietyService.Update(grapeVarietyResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _grapeVarietyService.Delete(id);
     }
 }

@@ -16,15 +16,32 @@ public class AddressController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<AddressResource> GetItemById(int id)
     {
-        AddressResource addressResource = await _addressService.GetItemById(id);
+        return await _addressService.GetItemById(id);
+    }
 
-        if (addressResource != null)
-        {
-            return Ok(addressResource);
-        }
+    [HttpGet]
+    public async Task<List<AddressResource>> GetAll()
+    {
+        return await _addressService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<AddressResource> Add(AddressResource addressResource)
+    {
+        return await _addressService.Add(addressResource);
+    }
+
+    [HttpPut]
+    public async Task<AddressResource> Update(AddressResource addressResource)
+    {
+        return await _addressService.Update(addressResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _addressService.Delete(id);
     }
 }

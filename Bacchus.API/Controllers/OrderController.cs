@@ -16,15 +16,32 @@ public class OrderController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<OrderResource> GetItemById(int id)
     {
-        OrderResource orderResource = await _orderService.GetItemById(id);
+        return await _orderService.GetItemById(id);
+    }
 
-        if (orderResource != null)
-        {
-            return Ok(orderResource);
-        }
+    [HttpGet]
+    public async Task<List<OrderResource>> GetAll()
+    {
+        return await _orderService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<OrderResource> Add(OrderResource orderResource)
+    {
+        return await _orderService.Add(orderResource);
+    }
+
+    [HttpPut]
+    public async Task<OrderResource> Update(OrderResource orderResource)
+    {
+        return await _orderService.Update(orderResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _orderService.Delete(id);
     }
 }

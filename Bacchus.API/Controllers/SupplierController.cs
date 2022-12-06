@@ -16,15 +16,32 @@ public class SupplierController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<SupplierResource> GetItemById(int id)
     {
-        SupplierResource supplierResource = await _supplierService.GetItemById(id);
+        return await _supplierService.GetItemById(id);
+    }
 
-        if (supplierResource != null)
-        {
-            return Ok(supplierResource);
-        }
+    [HttpGet]
+    public async Task<List<SupplierResource>> GetAll()
+    {
+        return await _supplierService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<SupplierResource> Add(SupplierResource supplierResource)
+    {
+        return await _supplierService.Add(supplierResource);
+    }
+
+    [HttpPut]
+    public async Task<SupplierResource> Update(SupplierResource supplierResource)
+    {
+        return await _supplierService.Update(supplierResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _supplierService.Delete(id);
     }
 }

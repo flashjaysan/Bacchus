@@ -16,15 +16,32 @@ public class UserRoleController : Controller
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetItemById(int id)
+    public async Task<UserRoleResource> GetItemById(int id)
     {
-        UserRoleResource userRoleResource = await _userRoleService.GetItemById(id);
+        return await _userRoleService.GetItemById(id);
+    }
 
-        if (userRoleResource != null)
-        {
-            return Ok(userRoleResource);
-        }
+    [HttpGet]
+    public async Task<List<UserRoleResource>> GetAll()
+    {
+        return await _userRoleService.GetAll();
+    }
 
-        return NotFound();
+    [HttpPost]
+    public async Task<UserRoleResource> Add(UserRoleResource userRoleResource)
+    {
+        return await _userRoleService.Add(userRoleResource);
+    }
+
+    [HttpPut]
+    public async Task<UserRoleResource> Update(UserRoleResource userRoleResource)
+    {
+        return await _userRoleService.Update(userRoleResource);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task Delete(int id)
+    {
+        await _userRoleService.Delete(id);
     }
 }

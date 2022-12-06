@@ -1,9 +1,17 @@
 ﻿using Bacchus.Common.Entities;
+using Bacchus.DataAccess.DbContext;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class OrderStatusRepository : IRepository<OrderStatusEntity>
 {
+    private readonly BacchusDbContext _dbContext;
+
+    public OrderStatusRepository(BacchusDbContext bacchusDbContext)
+    {
+        _dbContext = bacchusDbContext;
+    }
+
     public void Add(OrderStatusEntity orderStatusEntity)
     {
         throw new NotImplementedException();

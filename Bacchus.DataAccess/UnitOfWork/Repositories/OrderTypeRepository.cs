@@ -1,9 +1,17 @@
 ﻿using Bacchus.Common.Entities;
+using Bacchus.DataAccess.DbContext;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class OrderTypeRepository : IRepository<OrderTypeEntity>
 {
+    private readonly BacchusDbContext _dbContext;
+
+    public OrderTypeRepository(BacchusDbContext bacchusDbContext)
+    {
+        _dbContext = bacchusDbContext;
+    }
+
     public void Add(OrderTypeEntity orderTypeEntity)
     {
         throw new NotImplementedException();

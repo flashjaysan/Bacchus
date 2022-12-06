@@ -1,9 +1,17 @@
 ﻿using Bacchus.Common.Entities;
+using Bacchus.DataAccess.DbContext;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class RoleRepository : IRepository<RoleEntity>
 {
+    private readonly BacchusDbContext _dbContext;
+
+    public RoleRepository(BacchusDbContext bacchusDbContext)
+    {
+        _dbContext = bacchusDbContext;
+    }
+
     public void Add(RoleEntity roleEntity)
     {
         throw new NotImplementedException();

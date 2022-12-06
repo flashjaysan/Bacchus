@@ -1,9 +1,17 @@
 ﻿using Bacchus.Common.Entities;
+using Bacchus.DataAccess.DbContext;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
 public class AddressRepository : IRepository<AddressEntity>
 {
+    private readonly BacchusDbContext _dbContext;
+
+    public AddressRepository(BacchusDbContext bacchusDbContext)
+    {
+        _dbContext = bacchusDbContext;
+    }
+
     public void Add(AddressEntity addressEntity)
     {
         throw new NotImplementedException();

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
+[Produces("application/json")]
+[Route("api/ordertypes")]
 public class OrderTypeController : Controller
 {
     private readonly IService<OrderTypeResource> _orderTypeService;

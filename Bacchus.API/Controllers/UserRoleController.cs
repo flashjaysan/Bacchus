@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
+[Produces("application/json")]
+[Route("api/usersroles")]
 public class UserRoleController : Controller
 {
     private readonly IService<UserRoleResource> _userRoleService;

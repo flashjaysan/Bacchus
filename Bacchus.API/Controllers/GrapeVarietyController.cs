@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
+[Produces("application/json")]
+[Route("api/grapevarieties")]
 public class GrapeVarietyController : Controller
 {
     private readonly IService<GrapeVarietyResource> _grapeVarietyService;

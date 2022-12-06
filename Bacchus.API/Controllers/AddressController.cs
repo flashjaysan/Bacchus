@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
+[Produces("application/json")]
+[Route("api/addresses")]
 public class AddressController : Controller
 {
     private readonly IService<AddressResource> _addressService;

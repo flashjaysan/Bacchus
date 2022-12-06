@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bacchus.Business;
+using Bacchus.Common.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
 public class WineController : Controller
 {
-    public IActionResult Index()
+    private readonly IService<WineResource> _wineService;
+
+    public WineController(IService<WineResource> wineService)
     {
-        return View();
+        _wineService = wineService;
     }
 }

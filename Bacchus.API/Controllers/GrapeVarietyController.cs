@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bacchus.Business;
+using Bacchus.Common.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
 public class GrapeVarietyController : Controller
 {
-    public IActionResult Index()
+    private readonly IService<GrapeVarietyResource> _grapeVarietyService;
+
+    public GrapeVarietyController(IService<GrapeVarietyResource> grapeVarietyService)
     {
-        return View();
+        _grapeVarietyService = grapeVarietyService;
     }
 }

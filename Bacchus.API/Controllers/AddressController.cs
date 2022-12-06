@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bacchus.Business;
+using Bacchus.Common.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
 public class AddressController : Controller
 {
-    public IActionResult Index()
+    private readonly IService<AddressResource> _addressService;
+
+    public AddressController(IService<AddressResource> addressService)
     {
-        return View();
+        _addressService = addressService;
     }
 }

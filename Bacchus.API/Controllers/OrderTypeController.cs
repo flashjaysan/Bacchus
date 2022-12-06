@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bacchus.Business;
+using Bacchus.Common.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
 public class OrderTypeController : Controller
 {
-    public IActionResult Index()
+    private readonly IService<OrderTypeResource> _orderTypeService;
+
+    public OrderTypeController(IService<OrderTypeResource> orderTypeService)
     {
-        return View();
+        _orderTypeService = orderTypeService;
     }
 }

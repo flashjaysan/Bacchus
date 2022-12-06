@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bacchus.Business;
+using Bacchus.Common.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
 
 public class RoleController : Controller
 {
-    public IActionResult Index()
+    private readonly IService<RoleResource> _roleService;
+
+    public RoleController(IService<RoleResource> roleService)
     {
-        return View();
+        _roleService = roleService;
     }
 }

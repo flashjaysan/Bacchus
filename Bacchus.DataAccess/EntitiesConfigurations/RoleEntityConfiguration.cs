@@ -10,7 +10,7 @@ public class RoleEntityConfiguration : IEntityTypeConfiguration<RoleEntity>
     {
         builder.HasKey(roleEntity => roleEntity.Id);
         builder.ToTable("Roles");
-        builder.Property(roleEntity => roleEntity.Id).ValueGeneratedOnAdd();
+        builder.Property(roleEntity => roleEntity.Id).ValueGeneratedNever();
         
         builder
             .HasMany<UserRoleEntity>()

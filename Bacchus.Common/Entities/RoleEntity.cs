@@ -2,13 +2,40 @@
 
 namespace Bacchus.Common.Entities;
 
-public class RoleEntity : Entity
+public class RoleEntity : Enumeration
 {
-    public string Name { get; set; }
-    public List<UserRoleEntity> UsersRoles { get; set; }
+    public static RoleEntity Admin = new RoleEntity(1, "SuperAdmin");
+    public static RoleEntity Employee = new RoleEntity(2, "Employee");
 
-    public RoleEntity()
+    public RoleEntity(int id, string name)
+      : base(id, name)
     {
-        UsersRoles = new List<UserRoleEntity>();
+    }
+
+    public static IEnumerable<RoleEntity> List() => new[] { Admin };
+
+    public static RoleEntity FromName(string name)
+    {
+        var state = List()
+            .SingleOrDefault(s => String.Equals(s.Name, name, StringComparison.CurrentCultureIgnoreCase));
+
+        if (state == null)
+        {
+            throw new Exception($"Possible values for OrderStatus: {String.Join(",", List().Select(s => s.Name))}");
+        }
+
+        return state;
+    }
+
+    public static RoleEntity From(int id)
+    {
+        var state = List().SingleOrDefault(s => s.Id == id);
+
+        if (state == null)
+        {
+            throw new Exception($"Possible values for OrderStatus: {String.Join(",", List().Select(s => s.Name))}");
+        }
+
+        return state;
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Bacchus.Common.Entities;
+﻿using Bacchus.Common.Core;
 
-public class SupplierWineEntity
+namespace Bacchus.Common.Entities;
+
+public class SupplierWineEntity : Entity
 {
     public int SupplierId { get; set; }
     public int WineId { get; set; }

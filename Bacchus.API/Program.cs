@@ -1,6 +1,7 @@
 using Bacchus.Business;
 using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
+using Bacchus.DataAccess;
 using Bacchus.DataAccess.DbContext;
 using Bacchus.DataAccess.UnitOfWork;
 using Bacchus.DataAccess.UnitOfWork.Repositories;
@@ -52,7 +53,10 @@ builder.Services.AddDbContext<BacchusDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("BacchusDb"));
 });
-
+//Put static data in database 
+using var serviceScope = builder.Services.BuildServiceProvider();
+var context = serviceScope.GetService<BacchusDbContext>();
+new DbSeed().SeedAsync(context).Wait();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

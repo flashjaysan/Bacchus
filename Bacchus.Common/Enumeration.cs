@@ -63,4 +63,9 @@ public abstract class Enumeration : IComparable
     }
 
     public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
+
+    public virtual void Update(Enumeration enumeration)
+    {
+        this.Name = enumeration.Name;
+    }
 }

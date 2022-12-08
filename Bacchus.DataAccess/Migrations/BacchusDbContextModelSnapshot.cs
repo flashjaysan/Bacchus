@@ -181,10 +181,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.RoleEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -227,6 +224,39 @@ namespace Bacchus.DataAccess.Migrations
                     b.ToTable("Suppliers", (string)null);
                 });
 
+            modelBuilder.Entity("Bacchus.Common.Entities.SupplierWineEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("SupplierEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WineEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WineId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierEntityId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.HasIndex("WineEntityId");
+
+                    b.HasIndex("WineId");
+
+                    b.ToTable("SupplierWineEntity");
+                });
+
             modelBuilder.Entity("Bacchus.Common.Entities.UserEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -266,9 +296,6 @@ namespace Bacchus.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("RoleEntityId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
@@ -279,8 +306,6 @@ namespace Bacchus.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoleEntityId");
 
                     b.HasIndex("RoleId");
 
@@ -425,12 +450,35 @@ namespace Bacchus.DataAccess.Migrations
                     b.Navigation("Address");
                 });
 
+            modelBuilder.Entity("Bacchus.Common.Entities.SupplierWineEntity", b =>
+                {
+                    b.HasOne("Bacchus.Common.Entities.SupplierEntity", null)
+                        .WithMany("SuppliersWines")
+                        .HasForeignKey("SupplierEntityId");
+
+                    b.HasOne("Bacchus.Common.Entities.SupplierEntity", "SupplierEntity")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bacchus.Common.Entities.WineEntity", null)
+                        .WithMany("SuppliersWines")
+                        .HasForeignKey("WineEntityId");
+
+                    b.HasOne("Bacchus.Common.Entities.WineEntity", "WineEntity")
+                        .WithMany()
+                        .HasForeignKey("WineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SupplierEntity");
+
+                    b.Navigation("WineEntity");
+                });
+
             modelBuilder.Entity("Bacchus.Common.Entities.UserRoleEntity", b =>
                 {
-                    b.HasOne("Bacchus.Common.Entities.RoleEntity", null)
-                        .WithMany("UsersRoles")
-                        .HasForeignKey("RoleEntityId");
-
                     b.HasOne("Bacchus.Common.Entities.RoleEntity", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -478,9 +526,9 @@ namespace Bacchus.DataAccess.Migrations
                     b.Navigation("OrdersWines");
                 });
 
-            modelBuilder.Entity("Bacchus.Common.Entities.RoleEntity", b =>
+            modelBuilder.Entity("Bacchus.Common.Entities.SupplierEntity", b =>
                 {
-                    b.Navigation("UsersRoles");
+                    b.Navigation("SuppliersWines");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.UserEntity", b =>
@@ -495,6 +543,8 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.WineEntity", b =>
                 {
                     b.Navigation("OrdersWines");
+
+                    b.Navigation("SuppliersWines");
                 });
 #pragma warning restore 612, 618
         }

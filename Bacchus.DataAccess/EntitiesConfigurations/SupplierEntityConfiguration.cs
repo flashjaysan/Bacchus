@@ -12,7 +12,6 @@ public class SupplierEntityConfiguration : IEntityTypeConfiguration<SupplierEnti
         builder.ToTable("Suppliers");
         builder.Property(supplierEntity => supplierEntity.Id).ValueGeneratedOnAdd();
 
-
         builder
             .HasMany<SupplierWineEntity>()
             .WithOne(supplierWineEntity => supplierWineEntity.SupplierEntity)

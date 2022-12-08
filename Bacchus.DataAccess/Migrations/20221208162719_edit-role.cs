@@ -5,7 +5,7 @@
 namespace Bacchus.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initDb : Migration
+    public partial class editrole : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,8 +53,7 @@ namespace Bacchus.DataAccess.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -126,17 +125,11 @@ namespace Bacchus.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
-                    RoleEntityId = table.Column<int>(type: "int", nullable: true),
                     UserEntityId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UsersRoles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UsersRoles_Roles_RoleEntityId",
-                        column: x => x.RoleEntityId,
-                        principalTable: "Roles",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_UsersRoles_Roles_RoleId",
                         column: x => x.RoleId,
@@ -291,6 +284,44 @@ namespace Bacchus.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "SupplierWineEntity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SupplierId = table.Column<int>(type: "int", nullable: false),
+                    WineId = table.Column<int>(type: "int", nullable: false),
+                    SupplierEntityId = table.Column<int>(type: "int", nullable: true),
+                    WineEntityId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SupplierWineEntity", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_SupplierWineEntity_Suppliers_SupplierEntityId",
+                        column: x => x.SupplierEntityId,
+                        principalTable: "Suppliers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SupplierWineEntity_Suppliers_SupplierId",
+                        column: x => x.SupplierId,
+                        principalTable: "Suppliers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SupplierWineEntity_Wines_WineEntityId",
+                        column: x => x.WineEntityId,
+                        principalTable: "Wines",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_SupplierWineEntity_Wines_WineId",
+                        column: x => x.WineId,
+                        principalTable: "Wines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserEntityId",
                 table: "Addresses",
@@ -342,9 +373,24 @@ namespace Bacchus.DataAccess.Migrations
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsersRoles_RoleEntityId",
-                table: "UsersRoles",
-                column: "RoleEntityId");
+                name: "IX_SupplierWineEntity_SupplierEntityId",
+                table: "SupplierWineEntity",
+                column: "SupplierEntityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupplierWineEntity_SupplierId",
+                table: "SupplierWineEntity",
+                column: "SupplierId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupplierWineEntity_WineEntityId",
+                table: "SupplierWineEntity",
+                column: "WineEntityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SupplierWineEntity_WineId",
+                table: "SupplierWineEntity",
+                column: "WineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersRoles_RoleId",
@@ -382,6 +428,9 @@ namespace Bacchus.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "OrderWines");
+
+            migrationBuilder.DropTable(
+                name: "SupplierWineEntity");
 
             migrationBuilder.DropTable(
                 name: "UsersRoles");

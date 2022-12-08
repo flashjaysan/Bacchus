@@ -12,6 +12,6 @@ public class OrderEntity : Entity
 
     public OrderEntity()
     {
-        Lines = new List<OrderWineEntity>();
+        OrdersWines = new List<OrderWineEntity>();
     }
 }

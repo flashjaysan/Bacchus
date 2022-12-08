@@ -14,9 +14,11 @@ public class WineEntity : Entity
     public GrapeVarietyEntity GrapeVariety { get; set; }
     public SupplierEntity Supplier { get; set; }
     public List<OrderWineEntity> OrdersWines { get; set; }
+    public List<SupplierWineEntity> SuppliersWines { get; set; }
 
     public WineEntity()
     {
+        SuppliersWines = new List<SupplierWineEntity>();
         OrdersWines = new List<OrderWineEntity>();
     }
 }

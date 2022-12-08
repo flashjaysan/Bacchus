@@ -9,7 +9,7 @@ public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<AddressEntity> Addresses { get; set; }
     public DbSet<GrapeVarietyEntity> GrapeVarieties { get; set; }
     public DbSet<OrderEntity> Orders { get; set; }
-    public DbSet<OrderWineEntity> OrderLines { get; set; }
+    public DbSet<OrderWineEntity> OrderWines { get; set; }
     public DbSet<OrderStatusEntity> OrderStatuses { get; set; }
     public DbSet<OrderTypeEntity> OrderTypes { get; set; }
     public DbSet<RoleEntity> Roles { get; set; }
@@ -29,13 +29,11 @@ public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
         modelBuilder.ApplyConfiguration(new AddressEntityConfiguration());
         modelBuilder.ApplyConfiguration(new GrapeVarietyEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new OrderLineEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderStatusEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderTypeEntityConfiguration());
         modelBuilder.ApplyConfiguration(new RoleEntityConfiguration());
         modelBuilder.ApplyConfiguration(new SupplierEntityConfiguration());
         modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new UserRoleEntityConfiguration());
         modelBuilder.ApplyConfiguration(new WineEntityConfiguration());
         modelBuilder.ApplyConfiguration(new WineFamilyEntityConfiguration());
     }

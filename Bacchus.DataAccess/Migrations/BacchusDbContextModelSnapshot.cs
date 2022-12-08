@@ -31,34 +31,27 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AdditionalDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Number")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UserEntityId")
                         .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -77,7 +70,6 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -93,13 +85,13 @@ namespace Bacchus.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DeliveryAddressId")
+                    b.Property<int?>("DeliveryAddressId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int?>("StatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TypeId")
+                    b.Property<int?>("TypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -118,32 +110,6 @@ namespace Bacchus.DataAccess.Migrations
                     b.ToTable("Orders", (string)null);
                 });
 
-            modelBuilder.Entity("Bacchus.Common.Entities.OrderLineEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("OrderEntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WineId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderEntityId");
-
-                    b.HasIndex("WineId");
-
-                    b.ToTable("OrderLines", (string)null);
-                });
-
             modelBuilder.Entity("Bacchus.Common.Entities.OrderStatusEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -153,7 +119,6 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -170,12 +135,47 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("OrderTypes", (string)null);
+                });
+
+            modelBuilder.Entity("Bacchus.Common.Entities.OrderWineEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("OrderEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WineEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WineId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderEntityId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("WineEntityId");
+
+                    b.HasIndex("WineId");
+
+                    b.ToTable("OrderWines");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.RoleEntity", b =>
@@ -187,15 +187,9 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserEntityId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserEntityId");
 
                     b.ToTable("Roles", (string)null);
                 });
@@ -208,11 +202,10 @@ namespace Bacchus.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("EmailAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HomePhoneNumber")
@@ -222,11 +215,9 @@ namespace Bacchus.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Website")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -245,22 +236,18 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("EmailAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EncryptedPassword")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("HomePhoneNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MobilePhoneNumber")
@@ -279,7 +266,13 @@ namespace Bacchus.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("RoleEntityId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserEntityId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -287,11 +280,15 @@ namespace Bacchus.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleEntityId");
+
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("UserEntityId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsersRoles", (string)null);
+                    b.ToTable("UsersRoles");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.WineEntity", b =>
@@ -303,17 +300,15 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Domain")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FamilyId")
+                    b.Property<int?>("FamilyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GrapeVarietyId")
+                    b.Property<int?>("GrapeVarietyId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("PurchasePrice")
@@ -325,7 +320,7 @@ namespace Bacchus.DataAccess.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.Property<int>("SupplierId")
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("int");
 
                     b.Property<int>("Year")
@@ -351,7 +346,6 @@ namespace Bacchus.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -370,21 +364,15 @@ namespace Bacchus.DataAccess.Migrations
                 {
                     b.HasOne("Bacchus.Common.Entities.AddressEntity", "DeliveryAddress")
                         .WithMany()
-                        .HasForeignKey("DeliveryAddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DeliveryAddressId");
 
                     b.HasOne("Bacchus.Common.Entities.OrderStatusEntity", "Status")
                         .WithMany()
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatusId");
 
                     b.HasOne("Bacchus.Common.Entities.OrderTypeEntity", "Type")
                         .WithMany()
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TypeId");
 
                     b.HasOne("Bacchus.Common.Entities.UserEntity", "User")
                         .WithMany("Orders")
@@ -401,46 +389,57 @@ namespace Bacchus.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Bacchus.Common.Entities.OrderLineEntity", b =>
+            modelBuilder.Entity("Bacchus.Common.Entities.OrderWineEntity", b =>
                 {
                     b.HasOne("Bacchus.Common.Entities.OrderEntity", null)
-                        .WithMany("Lines")
+                        .WithMany("OrdersWines")
                         .HasForeignKey("OrderEntityId");
 
-                    b.HasOne("Bacchus.Common.Entities.WineEntity", "Wine")
+                    b.HasOne("Bacchus.Common.Entities.OrderEntity", "OrderEntity")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bacchus.Common.Entities.WineEntity", null)
+                        .WithMany("OrdersWines")
+                        .HasForeignKey("WineEntityId");
+
+                    b.HasOne("Bacchus.Common.Entities.WineEntity", "WineEntity")
                         .WithMany()
                         .HasForeignKey("WineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Wine");
-                });
+                    b.Navigation("OrderEntity");
 
-            modelBuilder.Entity("Bacchus.Common.Entities.RoleEntity", b =>
-                {
-                    b.HasOne("Bacchus.Common.Entities.UserEntity", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("UserEntityId");
+                    b.Navigation("WineEntity");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.SupplierEntity", b =>
                 {
                     b.HasOne("Bacchus.Common.Entities.AddressEntity", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.UserRoleEntity", b =>
                 {
+                    b.HasOne("Bacchus.Common.Entities.RoleEntity", null)
+                        .WithMany("UsersRoles")
+                        .HasForeignKey("RoleEntityId");
+
                     b.HasOne("Bacchus.Common.Entities.RoleEntity", "Role")
-                        .WithMany("UserRoles")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Bacchus.Common.Entities.UserEntity", null)
+                        .WithMany("UsersRoles")
+                        .HasForeignKey("UserEntityId");
 
                     b.HasOne("Bacchus.Common.Entities.UserEntity", "User")
                         .WithMany()
@@ -457,21 +456,15 @@ namespace Bacchus.DataAccess.Migrations
                 {
                     b.HasOne("Bacchus.Common.Entities.WineFamilyEntity", "Family")
                         .WithMany()
-                        .HasForeignKey("FamilyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FamilyId");
 
                     b.HasOne("Bacchus.Common.Entities.GrapeVarietyEntity", "GrapeVariety")
                         .WithMany()
-                        .HasForeignKey("GrapeVarietyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GrapeVarietyId");
 
                     b.HasOne("Bacchus.Common.Entities.SupplierEntity", "Supplier")
                         .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SupplierId");
 
                     b.Navigation("Family");
 
@@ -482,12 +475,12 @@ namespace Bacchus.DataAccess.Migrations
 
             modelBuilder.Entity("Bacchus.Common.Entities.OrderEntity", b =>
                 {
-                    b.Navigation("Lines");
+                    b.Navigation("OrdersWines");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.RoleEntity", b =>
                 {
-                    b.Navigation("UserRoles");
+                    b.Navigation("UsersRoles");
                 });
 
             modelBuilder.Entity("Bacchus.Common.Entities.UserEntity", b =>
@@ -496,7 +489,12 @@ namespace Bacchus.DataAccess.Migrations
 
                     b.Navigation("Orders");
 
-                    b.Navigation("Roles");
+                    b.Navigation("UsersRoles");
+                });
+
+            modelBuilder.Entity("Bacchus.Common.Entities.WineEntity", b =>
+                {
+                    b.Navigation("OrdersWines");
                 });
 #pragma warning restore 612, 618
         }

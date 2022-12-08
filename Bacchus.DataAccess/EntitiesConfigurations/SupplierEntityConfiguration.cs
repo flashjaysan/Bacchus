@@ -11,5 +11,12 @@ public class SupplierEntityConfiguration : IEntityTypeConfiguration<SupplierEnti
         builder.HasKey(supplierEntity => supplierEntity.Id);
         builder.ToTable("Suppliers");
         builder.Property(supplierEntity => supplierEntity.Id).ValueGeneratedOnAdd();
+
+
+        builder
+            .HasMany<SupplierWineEntity>()
+            .WithOne(supplierWineEntity => supplierWineEntity.SupplierEntity)
+            .HasForeignKey(supplierWineEntity => supplierWineEntity.SupplierId)
+            .IsRequired();
     }
 }

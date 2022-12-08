@@ -10,4 +10,10 @@ public class SupplierEntity : Entity
     public int MobilePhoneNumber { get; set; }
     public string Website { get; set; }
     public AddressEntity Address { get; set; }
+    public List<SupplierWineEntity> SuppliersWines { get; set; }
+
+    public SupplierEntity()
+    {
+        SuppliersWines = new List<SupplierWineEntity>();
+    }
 }

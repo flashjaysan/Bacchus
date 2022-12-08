@@ -15,26 +15,26 @@ public class OrderLineRepository : IRepository<OrderWineEntity>
 
     public void Add(OrderWineEntity orderLineEntity)
     {
-        _dbContext.OrderLines.Add(orderLineEntity);
+        _dbContext.OrderWines.Add(orderLineEntity);
     }
 
     public List<OrderWineEntity> GetAll()
     {
-        return _dbContext.OrderLines.ToList();
+        return _dbContext.OrderWines.ToList();
     }
 
     public OrderWineEntity GetOne(int id)
     {
-        return _dbContext.OrderLines.FirstOrDefault(orderLine => orderLine.Id == id);
+        return _dbContext.OrderWines.FirstOrDefault(orderLine => orderLine.Id == id);
     }
 
     public void Remove(OrderWineEntity orderLineEntity)
     {
-        _dbContext.OrderLines.Remove(orderLineEntity);
+        _dbContext.OrderWines.Remove(orderLineEntity);
     }
 
     public void Update(OrderWineEntity orderLineEntity)
     {
-        _dbContext.OrderLines.Update(orderLineEntity);
+        _dbContext.OrderWines.Update(orderLineEntity);
     }
 }

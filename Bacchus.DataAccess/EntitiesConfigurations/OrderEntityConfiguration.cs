@@ -11,5 +11,11 @@ public class OrderEntityConfiguration : IEntityTypeConfiguration<OrderEntity>
         builder.HasKey(orderEntity => orderEntity.Id);
         builder.ToTable("Orders");
         builder.Property(orderEntity => orderEntity.Id).ValueGeneratedOnAdd();
+
+        builder
+            .HasMany<OrderWineEntity>()
+            .WithOne(orderWineEntity => orderWineEntity.OrderEntity)
+            .HasForeignKey(orderWineEntity => orderWineEntity.OrderId)
+            .IsRequired();
     }
 }

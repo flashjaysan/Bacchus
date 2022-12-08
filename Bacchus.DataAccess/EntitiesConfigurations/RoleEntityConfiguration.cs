@@ -11,5 +11,11 @@ public class RoleEntityConfiguration : IEntityTypeConfiguration<RoleEntity>
         builder.HasKey(roleEntity => roleEntity.Id);
         builder.ToTable("Roles");
         builder.Property(roleEntity => roleEntity.Id).ValueGeneratedOnAdd();
+        
+        builder
+                .HasMany<UserRoleEntity>()
+                .WithOne(userRoleEntity => userRoleEntity.Role)
+                .HasForeignKey(UserRoleEntity => UserRoleEntity.RoleId)
+                .IsRequired();
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Bacchus.DataAccess.EntitiesConfigurations;
 
-public class OrderLineEntityConfiguration : IEntityTypeConfiguration<OrderLineEntity>
+public class OrderLineEntityConfiguration : IEntityTypeConfiguration<OrderWineEntity>
 {
-    public void Configure(EntityTypeBuilder<OrderLineEntity> builder)
+    public void Configure(EntityTypeBuilder<OrderWineEntity> builder)
     {
         builder.HasKey(orderLineEntity => orderLineEntity.Id);
         builder.ToTable("OrderLines");

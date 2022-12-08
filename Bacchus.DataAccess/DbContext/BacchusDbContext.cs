@@ -9,7 +9,7 @@ public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<AddressEntity> Addresses { get; set; }
     public DbSet<GrapeVarietyEntity> GrapeVarieties { get; set; }
     public DbSet<OrderEntity> Orders { get; set; }
-    public DbSet<OrderLineEntity> OrderLines { get; set; }
+    public DbSet<OrderWineEntity> OrderLines { get; set; }
     public DbSet<OrderStatusEntity> OrderStatuses { get; set; }
     public DbSet<OrderTypeEntity> OrderTypes { get; set; }
     public DbSet<RoleEntity> Roles { get; set; }

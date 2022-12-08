@@ -31,7 +31,7 @@ builder.Services.AddScoped<IService<WineFamilyResource>, WineFamilyService>();
 builder.Services.AddScoped<IRepository<AddressEntity>, AddressRepository>();
 builder.Services.AddScoped<IRepository<GrapeVarietyEntity>, GrapeVarietyRepository>();
 builder.Services.AddScoped<IRepository<OrderEntity>, OrderRepository>();
-builder.Services.AddScoped<IRepository<OrderLineEntity>, OrderLineRepository>();
+builder.Services.AddScoped<IRepository<OrderWineEntity>, OrderLineRepository>();
 builder.Services.AddScoped<IRepository<OrderStatusEntity>, OrderStatusRepository>();
 builder.Services.AddScoped<IRepository<OrderTypeEntity>, OrderTypeRepository>();
 builder.Services.AddScoped<IRepository<RoleEntity>, RoleRepository>();

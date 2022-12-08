@@ -8,7 +8,7 @@ public class OrderLineMapping : Profile
 {
     public OrderLineMapping()
     {
-        CreateMap<OrderLineEntity, OrderLineResource>();
-        CreateMap<OrderLineResource, OrderLineEntity>();
+        CreateMap<OrderWineEntity, OrderLineResource>();
+        CreateMap<OrderLineResource, OrderWineEntity>();
     }
 }

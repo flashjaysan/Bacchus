@@ -10,13 +10,13 @@ public class UserEntity : Entity
     public string EncryptedPassword { get; set; }
     public int HomePhoneNumber { get; set; }
     public int MobilePhoneNumber { get; set; }
-    public List<RoleEntity> Roles { get; set; }
+    public List<UserRoleEntity> UsersRoles { get; set; }
     public List<AddressEntity> Addresses { get; set; }
     public List<OrderEntity> Orders { get; set; }
 
     public UserEntity()
     {
-        Roles = new List<RoleEntity>();
+        UsersRoles = new List<UserRoleEntity>();
         Addresses = new List<AddressEntity>();
         Orders = new List<OrderEntity>();
     }

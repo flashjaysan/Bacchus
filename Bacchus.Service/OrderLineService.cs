@@ -9,11 +9,11 @@ namespace Bacchus.Service;
 
 public class OrderLineService : IService<OrderLineResource>
 {
-    private readonly IRepository<OrderLineEntity> _repository;
+    private readonly IRepository<OrderWineEntity> _repository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public OrderLineService(IRepository<OrderLineEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
+    public OrderLineService(IRepository<OrderWineEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
         _repository = repository;
         _mapper = mapper;
@@ -22,7 +22,7 @@ public class OrderLineService : IService<OrderLineResource>
 
     public async Task<OrderLineResource> Add(OrderLineResource orderLineResource)
     {
-        OrderLineEntity newOrderLine = _mapper.Map<OrderLineEntity>(orderLineResource);
+        OrderWineEntity newOrderLine = _mapper.Map<OrderWineEntity>(orderLineResource);
         _repository.Add(newOrderLine);
         await _unitOfWork.SaveIntoDbContextAsync();
         return orderLineResource;
@@ -30,7 +30,7 @@ public class OrderLineService : IService<OrderLineResource>
 
     public async Task Delete(int id)
     {
-        OrderLineEntity orderLineEntity = _repository.GetOne(id);
+        OrderWineEntity orderLineEntity = _repository.GetOne(id);
 
         if (orderLineEntity != null)
         {
@@ -42,31 +42,31 @@ public class OrderLineService : IService<OrderLineResource>
 
     public Task<List<OrderLineResource>> GetAll()
     {
-        List<OrderLineEntity> orderLineEntities = _repository.GetAll();
+        List<OrderWineEntity> orderLineEntities = _repository.GetAll();
         List<OrderLineResource> orderLineResources = _mapper.Map<List<OrderLineResource>>(orderLineEntities);
         return Task.FromResult(orderLineResources);
     }
 
     public Task<OrderLineResource> GetItemById(int id)
     {
-        OrderLineEntity orderLineEntity = _repository.GetOne(id);
-        OrderLineResource orderLineResource = _mapper.Map<OrderLineEntity, OrderLineResource>(orderLineEntity);
+        OrderWineEntity orderLineEntity = _repository.GetOne(id);
+        OrderLineResource orderLineResource = _mapper.Map<OrderWineEntity, OrderLineResource>(orderLineEntity);
         return Task.FromResult(orderLineResource);
     }
 
     public async Task<OrderLineResource> Update(OrderLineResource orderLineResource)
     {
-        OrderLineEntity orderLineEntity = _repository.GetOne(orderLineResource.Id);
+        OrderWineEntity orderLineEntity = _repository.GetOne(orderLineResource.Id);
 
         if (orderLineEntity == null)
         {
             throw new Exception("OrderLine doesn't exist.");
         }
 
-        OrderLineEntity updatedOrderLineEntity = _mapper.Map(orderLineResource, orderLineEntity);
+        OrderWineEntity updatedOrderLineEntity = _mapper.Map(orderLineResource, orderLineEntity);
         _repository.Update(updatedOrderLineEntity);
         await _unitOfWork.SaveIntoDbContextAsync();
-        OrderLineResource updatedOrderLineResource = _mapper.Map<OrderLineEntity, OrderLineResource>(updatedOrderLineEntity);
+        OrderLineResource updatedOrderLineResource = _mapper.Map<OrderWineEntity, OrderLineResource>(updatedOrderLineEntity);
         return updatedOrderLineResource;
     }
 }

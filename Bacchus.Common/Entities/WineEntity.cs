@@ -11,7 +11,6 @@ public class WineEntity : Entity
     public Decimal PurchasePrice { get; set; }
     public int Stock { get; set; }
     public WineFamilyEntity Family { get; set; }
-    public GrapeVarietyEntity GrapeVariety { get; set; }
     public SupplierEntity Supplier { get; set; }
     public List<OrderWineEntity> OrdersWines { get; set; }
     public List<SupplierWineEntity> SuppliersWines { get; set; }

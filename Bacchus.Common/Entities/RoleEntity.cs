@@ -12,7 +12,7 @@ public class RoleEntity : Enumeration
     {
     }
 
-    public static IEnumerable<RoleEntity> List() => new[] { Admin };
+    public static IEnumerable<RoleEntity> List() => new[] { Admin, Employee };
 
     public static RoleEntity FromName(string name)
     {

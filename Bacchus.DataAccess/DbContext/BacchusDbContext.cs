@@ -7,7 +7,6 @@ namespace Bacchus.DataAccess.DbContext;
 public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
     public DbSet<AddressEntity> Addresses { get; set; }
-    public DbSet<GrapeVarietyEntity> GrapeVarieties { get; set; }
     public DbSet<OrderEntity> Orders { get; set; }
     public DbSet<OrderWineEntity> OrderWines { get; set; }
     public DbSet<OrderStatusEntity> OrderStatuses { get; set; }
@@ -27,7 +26,6 @@ public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.ApplyConfiguration(new AddressEntityConfiguration());
-        modelBuilder.ApplyConfiguration(new GrapeVarietyEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderStatusEntityConfiguration());
         modelBuilder.ApplyConfiguration(new OrderTypeEntityConfiguration());

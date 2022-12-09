@@ -13,9 +13,9 @@ public class OrderLineRepository : IRepository<OrderWineEntity>
         _dbContext = bacchusDbContext;
     }
 
-    public void Add(OrderWineEntity orderLineEntity)
+    public void Add(OrderWineEntity orderWineEntity)
     {
-        _dbContext.OrderWines.Add(orderLineEntity);
+        _dbContext.OrderWines.Add(orderWineEntity);
     }
 
     public List<OrderWineEntity> GetAll()
@@ -25,12 +25,12 @@ public class OrderLineRepository : IRepository<OrderWineEntity>
 
     public OrderWineEntity GetOne(int id)
     {
-        return _dbContext.OrderWines.FirstOrDefault(orderLine => orderLine.Id == id);
+        return _dbContext.OrderWines.FirstOrDefault(orderWine => orderWine.Id == id);
     }
 
-    public void Remove(OrderWineEntity orderLineEntity)
+    public void Remove(OrderWineEntity orderWineEntity)
     {
-        _dbContext.OrderWines.Remove(orderLineEntity);
+        _dbContext.OrderWines.Remove(orderWineEntity);
     }
 
     public void Update(OrderWineEntity orderLineEntity)

@@ -16,7 +16,6 @@ builder.Services.AddControllers();
 
 // injection des services
 builder.Services.AddScoped<IService<AddressResource>, AddressService>();
-builder.Services.AddScoped<IService<GrapeVarietyResource>, GrapeVarietyService>();
 builder.Services.AddScoped<IService<OrderResource>, OrderService>();
 builder.Services.AddScoped<IService<OrderLineResource>, OrderLineService>();
 builder.Services.AddScoped<IService<OrderStatusResource>, OrderStatusService>();
@@ -30,7 +29,6 @@ builder.Services.AddScoped<IService<WineFamilyResource>, WineFamilyService>();
 
 // injection des repositories
 builder.Services.AddScoped<IRepository<AddressEntity>, AddressRepository>();
-builder.Services.AddScoped<IRepository<GrapeVarietyEntity>, GrapeVarietyRepository>();
 builder.Services.AddScoped<IRepository<OrderEntity>, OrderRepository>();
 builder.Services.AddScoped<IRepository<OrderWineEntity>, OrderLineRepository>();
 builder.Services.AddScoped<IRepository<OrderStatusEntity>, OrderStatusRepository>();

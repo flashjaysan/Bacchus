@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Bacchus.Common\Bacchus.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

@@ -10,6 +10,6 @@ public class OrderTypeEntityConfiguration : IEntityTypeConfiguration<OrderTypeEn
     {
         builder.HasKey(orderTypeEntity => orderTypeEntity.Id);
         builder.ToTable("OrderTypes");
-        builder.Property(orderTypeEntity => orderTypeEntity.Id).ValueGeneratedOnAdd();
+        builder.Property(orderTypeEntity => orderTypeEntity.Id).ValueGeneratedNever();
     }
 }

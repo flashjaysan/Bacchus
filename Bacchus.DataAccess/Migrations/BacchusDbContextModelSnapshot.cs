@@ -97,10 +97,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.OrderStatusEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -113,10 +110,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.OrderTypeEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -347,10 +341,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.WineFamilyEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

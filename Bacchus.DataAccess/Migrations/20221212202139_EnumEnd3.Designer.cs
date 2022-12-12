@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bacchus.DataAccess.Migrations
 {
     [DbContext(typeof(BacchusDbContext))]
-    [Migration("20221208162719_edit-role")]
-    partial class editrole
+    [Migration("20221212202139_EnumEnd3")]
+    partial class EnumEnd3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,22 +64,6 @@ namespace Bacchus.DataAccess.Migrations
                     b.ToTable("Addresses", (string)null);
                 });
 
-            modelBuilder.Entity("Bacchus.Common.Entities.GrapeVarietyEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GrapeVarieties", (string)null);
-                });
-
             modelBuilder.Entity("Bacchus.Common.Entities.OrderEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -116,10 +100,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.OrderStatusEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -132,10 +113,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.OrderTypeEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -234,6 +212,9 @@ namespace Bacchus.DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("SupplierEntityId")
                         .HasColumnType("int");
@@ -336,9 +317,6 @@ namespace Bacchus.DataAccess.Migrations
                     b.Property<int?>("FamilyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GrapeVarietyId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("PurchasePrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -358,8 +336,6 @@ namespace Bacchus.DataAccess.Migrations
 
                     b.HasIndex("FamilyId");
 
-                    b.HasIndex("GrapeVarietyId");
-
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Wines", (string)null);
@@ -368,10 +344,7 @@ namespace Bacchus.DataAccess.Migrations
             modelBuilder.Entity("Bacchus.Common.Entities.WineFamilyEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -509,17 +482,11 @@ namespace Bacchus.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("FamilyId");
 
-                    b.HasOne("Bacchus.Common.Entities.GrapeVarietyEntity", "GrapeVariety")
-                        .WithMany()
-                        .HasForeignKey("GrapeVarietyId");
-
                     b.HasOne("Bacchus.Common.Entities.SupplierEntity", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId");
 
                     b.Navigation("Family");
-
-                    b.Navigation("GrapeVariety");
 
                     b.Navigation("Supplier");
                 });

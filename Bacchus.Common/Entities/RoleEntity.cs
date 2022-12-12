@@ -1,18 +1,17 @@
-﻿using Bacchus.Common.Core;
-
-namespace Bacchus.Common.Entities;
+﻿namespace Bacchus.Common.Entities;
 
 public class RoleEntity : Enumeration
 {
     public static RoleEntity Admin = new RoleEntity(1, "SuperAdmin");
     public static RoleEntity Employee = new RoleEntity(2, "Employee");
+    public static RoleEntity Client = new RoleEntity(3, "Client");
 
     public RoleEntity(int id, string name)
       : base(id, name)
     {
     }
 
-    public static IEnumerable<RoleEntity> List() => new[] { Admin, Employee };
+    public static IEnumerable<RoleEntity> List() => new[] { Admin, Employee, Client };
 
     public static RoleEntity FromName(string name)
     {

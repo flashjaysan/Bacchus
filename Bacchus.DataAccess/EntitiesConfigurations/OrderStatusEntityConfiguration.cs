@@ -10,6 +10,6 @@ public class OrderStatusEntityConfiguration : IEntityTypeConfiguration<OrderStat
     {
         builder.HasKey(orderStatusEntity => orderStatusEntity.Id);
         builder.ToTable("OrderStatuses");
-        builder.Property(orderStatusEntity => orderStatusEntity.Id).ValueGeneratedOnAdd();
+        builder.Property(orderStatusEntity => orderStatusEntity.Id).ValueGeneratedNever();
     }
 }

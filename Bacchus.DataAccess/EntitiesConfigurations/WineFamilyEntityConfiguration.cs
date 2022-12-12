@@ -10,6 +10,6 @@ public class WineFamilyEntityConfiguration : IEntityTypeConfiguration<WineFamily
     {
         builder.HasKey(wineFamilyEntity => wineFamilyEntity.Id);
         builder.ToTable("WineFamilies");
-        builder.Property(wineFamilyEntity => wineFamilyEntity.Id).ValueGeneratedOnAdd();
+        builder.Property(wineFamilyEntity => wineFamilyEntity.Id).ValueGeneratedNever();
     }
 }

@@ -5,30 +5,16 @@
 namespace Bacchus.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class editrole : Migration
+    public partial class EnumEnd3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "GrapeVarieties",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GrapeVarieties", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OrderStatuses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -40,8 +26,7 @@ namespace Bacchus.DataAccess.Migrations
                 name: "OrderTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -83,8 +68,7 @@ namespace Bacchus.DataAccess.Migrations
                 name: "WineFamilies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -222,17 +206,11 @@ namespace Bacchus.DataAccess.Migrations
                     PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     FamilyId = table.Column<int>(type: "int", nullable: true),
-                    GrapeVarietyId = table.Column<int>(type: "int", nullable: true),
                     SupplierId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Wines", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Wines_GrapeVarieties_GrapeVarietyId",
-                        column: x => x.GrapeVarietyId,
-                        principalTable: "GrapeVarieties",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Wines_Suppliers_SupplierId",
                         column: x => x.SupplierId,
@@ -292,6 +270,7 @@ namespace Bacchus.DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SupplierId = table.Column<int>(type: "int", nullable: false),
                     WineId = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     SupplierEntityId = table.Column<int>(type: "int", nullable: true),
                     WineEntityId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -413,11 +392,6 @@ namespace Bacchus.DataAccess.Migrations
                 column: "FamilyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wines_GrapeVarietyId",
-                table: "Wines",
-                column: "GrapeVarietyId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Wines_SupplierId",
                 table: "Wines",
                 column: "SupplierId");
@@ -449,9 +423,6 @@ namespace Bacchus.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderTypes");
-
-            migrationBuilder.DropTable(
-                name: "GrapeVarieties");
 
             migrationBuilder.DropTable(
                 name: "Suppliers");

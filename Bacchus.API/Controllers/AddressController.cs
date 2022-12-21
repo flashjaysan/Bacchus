@@ -26,15 +26,15 @@ public class AddressController : Controller
     {
         return await _addressService.GetAll();
     }
-
+    //FromBody add c'est plus un parametre d'url c'est dans le body json pour tout envoie de requête    a
     [HttpPost]
-    public async Task<AddressResource> Add(AddressResource addressResource)
+    public async Task<AddressResource> Add([FromBody] AddressResource addressResource) 
     {
         return await _addressService.Add(addressResource);
     }
 
     [HttpPut]
-    public async Task<AddressResource> Update(AddressResource addressResource)
+    public async Task<AddressResource> Update([FromBody] AddressResource addressResource)
     {
         return await _addressService.Update(addressResource);
     }

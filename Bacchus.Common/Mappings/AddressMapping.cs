@@ -9,6 +9,7 @@ public class AddressMapping : Profile
     public AddressMapping()
     {
         CreateMap<AddressEntity, AddressResource>();
-        CreateMap<AddressResource, AddressEntity>();
+        CreateMap<AddressResource, AddressEntity>()
+        .ForMember(addressEntity => addressEntity.Id, option => option.Ignore());
     }
 }

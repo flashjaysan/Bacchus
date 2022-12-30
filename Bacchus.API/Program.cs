@@ -36,6 +36,7 @@ builder.Services.AddScoped<IRepository<OrderStatusEntity>, OrderStatusRepository
 builder.Services.AddScoped<IRepository<OrderTypeEntity>, OrderTypeRepository>();
 builder.Services.AddScoped<IRepository<RoleEntity>, RoleRepository>();
 builder.Services.AddScoped<IRepository<SupplierEntity>, SupplierRepository>();
+builder.Services.AddScoped<IRepository<SupplierWineEntity>, SupplierWineRepository>();
 builder.Services.AddScoped<IRepository<UserEntity>, UserRepository>();
 builder.Services.AddScoped<IRepository<UserRoleEntity>, UserRoleRepository>();
 builder.Services.AddScoped<IRepository<WineEntity>, WineRepository>();

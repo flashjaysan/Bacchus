@@ -4,9 +4,9 @@ using Bacchus.Common.Resources;
 
 namespace Bacchus.Common.Mappings;
 
-public class OrderLineMapping : Profile
+public class OrderWineMapping : Profile
 {
-    public OrderLineMapping()
+    public OrderWineMapping()
     {
         CreateMap<OrderWineEntity, OrderWineResource>();
         CreateMap<OrderWineResource, OrderWineEntity>();

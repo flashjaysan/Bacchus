@@ -17,11 +17,12 @@ builder.Services.AddControllers();
 // injection des services
 builder.Services.AddScoped<IService<AddressResource>, AddressService>();
 builder.Services.AddScoped<IService<OrderResource>, OrderService>();
-builder.Services.AddScoped<IService<OrderWineResource>, OrderLineService>();
+builder.Services.AddScoped<IService<OrderWineResource>, OrderWineService>();
 builder.Services.AddScoped<IService<OrderStatusResource>, OrderStatusService>();
 builder.Services.AddScoped<IService<OrderTypeResource>, OrderTypeService>();
 builder.Services.AddScoped<IService<RoleResource>, RoleService>();
 builder.Services.AddScoped<IService<SupplierResource>, SupplierService>();
+builder.Services.AddScoped<IService<SupplierWineResource>, SupplierWineService>();
 builder.Services.AddScoped<IService<UserResource>, UserService>();
 builder.Services.AddScoped<IService<UserRoleResource>, UserRoleService>();
 builder.Services.AddScoped<IService<WineResource>, WineService>();

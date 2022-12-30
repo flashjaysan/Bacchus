@@ -7,13 +7,13 @@ using Bacchus.DataAccess.UnitOfWork;
 
 namespace Bacchus.Service;
 
-public class OrderLineService : IService<OrderWineResource>
+public class OrderWineService : IService<OrderWineResource>
 {
     private readonly IRepository<OrderWineEntity> _repository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public OrderLineService(IRepository<OrderWineEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
+    public OrderWineService(IRepository<OrderWineEntity> repository, IMapper mapper, IUnitOfWork unitOfWork)
     {
         _repository = repository;
         _mapper = mapper;

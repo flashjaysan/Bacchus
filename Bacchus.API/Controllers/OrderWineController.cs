@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bacchus.API.Controllers;
 
 [Produces("application/json")]
-[Route("api/orderlines")]
-public class OrderLineController : Controller
+[Route("api/orderswines")]
+public class OrderWineController : Controller
 {
     private readonly IService<OrderWineResource> _orderLineService;
 
-    public OrderLineController(IService<OrderWineResource> orderLineService)
+    public OrderWineController(IService<OrderWineResource> orderLineService)
     {
         _orderLineService = orderLineService;
     }

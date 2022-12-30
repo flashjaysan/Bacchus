@@ -13,6 +13,7 @@ public class BacchusDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<OrderTypeEntity> OrderTypes { get; set; }
     public DbSet<RoleEntity> Roles { get; set; }
     public DbSet<SupplierEntity> Suppliers { get; set; }
+    public DbSet<SupplierWineEntity> SuppliersWines { get; set; }
     public DbSet<UserEntity> Users { get; set; }
     public DbSet<UserRoleEntity> UsersRoles { get; set; }
     public DbSet<WineEntity> Wines { get; set; }

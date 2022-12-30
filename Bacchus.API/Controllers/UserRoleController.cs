@@ -28,13 +28,13 @@ public class UserRoleController : Controller
     }
 
     [HttpPost]
-    public async Task<UserRoleResource> Add(UserRoleResource userRoleResource)
+    public async Task<UserRoleResource> Add([FromBody] UserRoleResource userRoleResource)
     {
         return await _userRoleService.Add(userRoleResource);
     }
 
     [HttpPut]
-    public async Task<UserRoleResource> Update(UserRoleResource userRoleResource)
+    public async Task<UserRoleResource> Update([FromBody] UserRoleResource userRoleResource)
     {
         return await _userRoleService.Update(userRoleResource);
     }

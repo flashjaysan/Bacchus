@@ -9,4 +9,6 @@ public class SupplierWineEntity : Entity
     public SupplierEntity SupplierEntity { get; set; }
     public WineEntity WineEntity { get; set; }
     public Decimal Price { get; set; }
+
+    // deux existants 
 }

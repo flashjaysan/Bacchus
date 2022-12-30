@@ -28,13 +28,13 @@ public class OrderStatusController : Controller
     }
 
     [HttpPost]
-    public async Task<OrderStatusResource> Add(OrderStatusResource orderStatusResource)
+    public async Task<OrderStatusResource> Add([FromBody] OrderStatusResource orderStatusResource)
     {
         return await _orderStatusService.Add(orderStatusResource);
     }
 
     [HttpPut]
-    public async Task<OrderStatusResource> Update(OrderStatusResource orderStatusResource)
+    public async Task<OrderStatusResource> Update([FromBody] OrderStatusResource orderStatusResource)
     {
         return await _orderStatusService.Update(orderStatusResource);
     }

@@ -9,6 +9,7 @@ public class OrderMapping : Profile
     public OrderMapping()
     {
         CreateMap<OrderEntity, OrderResource>();
-        CreateMap<OrderResource, OrderEntity>();
+        CreateMap<OrderResource, OrderEntity>()
+        .ForMember(orderEntity => orderEntity.Id, option => option.Ignore());
     }
 }

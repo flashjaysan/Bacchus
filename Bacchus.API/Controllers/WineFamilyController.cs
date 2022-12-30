@@ -28,13 +28,13 @@ public class WineFamilyController : Controller
     }
 
     [HttpPost]
-    public async Task<WineFamilyResource> Add(WineFamilyResource wineFamilyResource)
+    public async Task<WineFamilyResource> Add([FromBody] WineFamilyResource wineFamilyResource)
     {
         return await _wineFamilyService.Add(wineFamilyResource);
     }
 
     [HttpPut]
-    public async Task<WineFamilyResource> Update(WineFamilyResource wineFamilyResource)
+    public async Task<WineFamilyResource> Update([FromBody] WineFamilyResource wineFamilyResource)
     {
         return await _wineFamilyService.Update(wineFamilyResource);
     }

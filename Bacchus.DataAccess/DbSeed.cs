@@ -11,6 +11,7 @@ public class DbSeed
         using (context)
         {
             SeedRoleData<RoleEntity>(context);
+            SeedRoleData<WineFamilyEntity>(context);
             await context.SaveChangesAsync();
         }
     }
@@ -21,17 +22,15 @@ public class DbSeed
 
         List<T> existingData = context.Set<T>().ToList();
 
-        foreach (T newSeed in newSeeds)
+        foreach (T seed in newSeeds)
         {
-            // if the Id already exist we update
-            if (existingData.Select(ed => ed.Id).Contains(newSeed.Id))
+            if (existingData.Any(x => x.Id == seed.Id))
             {
-                existingData.FirstOrDefault(ed => ed.Id == newSeed.Id).Update(newSeed);
+                existingData.FirstOrDefault(x => x.Id == seed.Id).Update(seed);
             }
-            // if the Id already exist we create a new one
             else
             {
-                context.Add(newSeed);
+                context.Set<T>().Add(seed);
             }
         }
         // we don't delete the existing one that aren't in the seedfile because of possible FK reference logical delete possible or if cascade

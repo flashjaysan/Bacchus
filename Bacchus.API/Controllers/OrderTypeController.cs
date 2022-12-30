@@ -28,13 +28,13 @@ public class OrderTypeController : Controller
     }
 
     [HttpPost]
-    public async Task<OrderTypeResource> Add(OrderTypeResource orderTypeResource)
+    public async Task<OrderTypeResource> Add([FromBody] OrderTypeResource orderTypeResource)
     {
         return await _orderTypeService.Add(orderTypeResource);
     }
 
     [HttpPut]
-    public async Task<OrderTypeResource> Update(OrderTypeResource orderTypeResource)
+    public async Task<OrderTypeResource> Update([FromBody] OrderTypeResource orderTypeResource)
     {
         return await _orderTypeService.Update(orderTypeResource);
     }

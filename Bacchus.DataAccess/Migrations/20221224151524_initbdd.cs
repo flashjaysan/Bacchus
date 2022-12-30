@@ -5,7 +5,7 @@
 namespace Bacchus.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class EnumEnd3 : Migration
+    public partial class initbdd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

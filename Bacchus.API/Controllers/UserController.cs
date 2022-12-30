@@ -28,13 +28,13 @@ public class UserController : Controller
     }
 
     [HttpPost]
-    public async Task<UserResource> Add(UserResource userResource)
+    public async Task<UserResource> Add([FromBody] UserResource userResource)
     {
         return await _userService.Add(userResource);
     }
 
     [HttpPut]
-    public async Task<UserResource> Update(UserResource userResource)
+    public async Task<UserResource> Update([FromBody] UserResource userResource)
     {
         return await _userService.Update(userResource);
     }

@@ -28,13 +28,13 @@ public class OrderLineController : Controller
     }
 
     [HttpPost]
-    public async Task<OrderLineResource> Add(OrderLineResource orderLineResource)
+    public async Task<OrderLineResource> Add([FromBody] OrderLineResource orderLineResource)
     {
         return await _orderLineService.Add(orderLineResource);
     }
 
     [HttpPut]
-    public async Task<OrderLineResource> Update(OrderLineResource orderLineResource)
+    public async Task<OrderLineResource> Update([FromBody] OrderLineResource orderLineResource)
     {
         return await _orderLineService.Update(orderLineResource);
     }

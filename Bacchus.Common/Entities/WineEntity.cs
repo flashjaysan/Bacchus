@@ -11,9 +11,9 @@ public class WineEntity : Entity
     public Decimal PurchasePrice { get; set; }
     public int Stock { get; set; }
     public WineFamilyEntity Family { get; set; }
-    public SupplierEntity Supplier { get; set; }
+    public SupplierEntity Supplier { get; set; } //table wine relier en one to many ici 
     public List<OrderWineEntity> OrdersWines { get; set; }
-    public List<SupplierWineEntity> SuppliersWines { get; set; }
+    public List<SupplierWineEntity> SuppliersWines { get; set; }// table relier en many to many 
 
     public WineEntity()
     {

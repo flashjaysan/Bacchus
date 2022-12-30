@@ -28,13 +28,13 @@ public class SupplierController : Controller
     }
 
     [HttpPost]
-    public async Task<SupplierResource> Add(SupplierResource supplierResource)
+    public async Task<SupplierResource> Add([FromBody] SupplierResource supplierResource)
     {
         return await _supplierService.Add(supplierResource);
     }
 
     [HttpPut]
-    public async Task<SupplierResource> Update(SupplierResource supplierResource)
+    public async Task<SupplierResource> Update([FromBody] SupplierResource supplierResource)
     {
         return await _supplierService.Update(supplierResource);
     }

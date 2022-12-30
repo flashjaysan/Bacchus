@@ -28,13 +28,13 @@ public class WineController : Controller
     }
 
     [HttpPost]
-    public async Task<WineResource> Add(WineResource wineResource)
+    public async Task<WineResource> Add([FromBody] WineResource wineResource)
     {
         return await _wineService.Add(wineResource);
     }
 
     [HttpPut]
-    public async Task<WineResource> Update(WineResource wineResource)
+    public async Task<WineResource> Update([FromBody] WineResource wineResource)
     {
         return await _wineService.Update(wineResource);
     }

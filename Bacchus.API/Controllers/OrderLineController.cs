@@ -8,33 +8,33 @@ namespace Bacchus.API.Controllers;
 [Route("api/orderlines")]
 public class OrderLineController : Controller
 {
-    private readonly IService<OrderLineResource> _orderLineService;
+    private readonly IService<OrderWineResource> _orderLineService;
 
-    public OrderLineController(IService<OrderLineResource> orderLineService)
+    public OrderLineController(IService<OrderWineResource> orderLineService)
     {
         _orderLineService = orderLineService;
     }
 
     [HttpGet("{id}")]
-    public async Task<OrderLineResource> GetItemById(int id)
+    public async Task<OrderWineResource> GetItemById(int id)
     {
         return await _orderLineService.GetItemById(id);
     }
 
     [HttpGet]
-    public async Task<List<OrderLineResource>> GetAll()
+    public async Task<List<OrderWineResource>> GetAll()
     {
         return await _orderLineService.GetAll();
     }
 
     [HttpPost]
-    public async Task<OrderLineResource> Add([FromBody] OrderLineResource orderLineResource)
+    public async Task<OrderWineResource> Add(OrderWineResource orderLineResource)
     {
         return await _orderLineService.Add(orderLineResource);
     }
 
     [HttpPut]
-    public async Task<OrderLineResource> Update([FromBody] OrderLineResource orderLineResource)
+    public async Task<OrderWineResource> Update(OrderWineResource orderLineResource)
     {
         return await _orderLineService.Update(orderLineResource);
     }

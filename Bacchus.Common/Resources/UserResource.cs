@@ -10,13 +10,13 @@ public class UserResource : Resource
     public string EncryptedPassword { get; set; }
     public int HomePhoneNumber { get; set; }
     public int MobilePhoneNumber { get; set; }
-    public List<RoleResource> Roles { get; set; }
+    public List<UserRoleResource> UsersRoles { get; set; }
     public List<AddressResource> Addresses { get; set; }
     public List<OrderResource> Orders { get; set; }
 
     public UserResource()
     {
-        Roles = new List<RoleResource>();
+        UsersRoles = new List<UserRoleResource>();
         Addresses = new List<AddressResource>();
         Orders = new List<OrderResource>();
     }

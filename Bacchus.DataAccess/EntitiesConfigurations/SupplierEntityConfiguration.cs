@@ -14,7 +14,7 @@ public class SupplierEntityConfiguration : IEntityTypeConfiguration<SupplierEnti
 
         builder
             .HasMany<SupplierWineEntity>()
-            .WithOne(supplierWineEntity => supplierWineEntity.SupplierEntity)
+            .WithOne(supplierWineEntity => supplierWineEntity.Supplier)
             .HasForeignKey(supplierWineEntity => supplierWineEntity.SupplierId)
             .IsRequired();
     }

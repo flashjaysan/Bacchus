@@ -6,9 +6,7 @@ public class SupplierWineEntity : Entity
 {
     public int SupplierId { get; set; }
     public int WineId { get; set; }
-    public SupplierEntity SupplierEntity { get; set; }
-    public WineEntity WineEntity { get; set; }
+    public SupplierEntity Supplier { get; set; }
+    public WineEntity Wine { get; set; }
     public Decimal Price { get; set; }
-
-    // deux existants 
 }

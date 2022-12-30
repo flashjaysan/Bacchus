@@ -14,13 +14,13 @@ public class WineEntityConfiguration : IEntityTypeConfiguration<WineEntity>
 
         builder
             .HasMany<OrderWineEntity>()
-            .WithOne(orderWineEntity => orderWineEntity.WineEntity)
+            .WithOne(orderWineEntity => orderWineEntity.Wine)
             .HasForeignKey(orderWineEntity => orderWineEntity.WineId)
             .IsRequired();
 
         builder
         .HasMany<SupplierWineEntity>()
-        .WithOne(supplierWineEntity => supplierWineEntity.WineEntity)
+        .WithOne(supplierWineEntity => supplierWineEntity.Wine)
         .HasForeignKey(supplierWineEntity => supplierWineEntity.WineId)
         .IsRequired();
     }

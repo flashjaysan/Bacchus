@@ -1,6 +1,5 @@
 using Bacchus.Business;
 using Bacchus.Common.Entities;
-using Bacchus.Common.Mappings;
 using Bacchus.Common.Resources;
 using Bacchus.DataAccess;
 using Bacchus.DataAccess.DbContext;
@@ -18,7 +17,7 @@ builder.Services.AddControllers();
 // injection des services
 builder.Services.AddScoped<IService<AddressResource>, AddressService>();
 builder.Services.AddScoped<IService<OrderResource>, OrderService>();
-builder.Services.AddScoped<IService<OrderLineResource>, OrderLineService>();
+builder.Services.AddScoped<IService<OrderWineResource>, OrderLineService>();
 builder.Services.AddScoped<IService<OrderStatusResource>, OrderStatusService>();
 builder.Services.AddScoped<IService<OrderTypeResource>, OrderTypeService>();
 builder.Services.AddScoped<IService<RoleResource>, RoleService>();
@@ -47,9 +46,7 @@ builder.Services.AddScoped<BacchusDbContext>();
 
 builder.Services.AddMvc();
 builder.Services.AddCors();
-builder.Services.AddAutoMapper(typeof(AddressMapping).Assembly); //modèle 
-
-//builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); supp puis remplacer par builder.Services.AddAutoMapper(typeof(AddressMapping).Assembly);
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<BacchusDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("BacchusDb"));

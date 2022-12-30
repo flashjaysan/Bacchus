@@ -14,7 +14,7 @@ public class OrderEntityConfiguration : IEntityTypeConfiguration<OrderEntity>
 
         builder
             .HasMany<OrderWineEntity>()
-            .WithOne(orderWineEntity => orderWineEntity.OrderEntity)
+            .WithOne(orderWineEntity => orderWineEntity.Order)
             .HasForeignKey(orderWineEntity => orderWineEntity.OrderId)
             .IsRequired();
     }

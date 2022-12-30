@@ -4,11 +4,11 @@ using System.Data;
 
 namespace Bacchus.DataAccess.UnitOfWork.Repositories;
 
-public class OrderLineRepository : IRepository<OrderWineEntity>
+public class OrderWineRepository : IRepository<OrderWineEntity>
 {
     private readonly BacchusDbContext _dbContext;
 
-    public OrderLineRepository(BacchusDbContext bacchusDbContext)
+    public OrderWineRepository(BacchusDbContext bacchusDbContext)
     {
         _dbContext = bacchusDbContext;
     }
@@ -33,8 +33,8 @@ public class OrderLineRepository : IRepository<OrderWineEntity>
         _dbContext.OrderWines.Remove(orderWineEntity);
     }
 
-    public void Update(OrderWineEntity orderLineEntity)
+    public void Update(OrderWineEntity orderWineEntity)
     {
-        _dbContext.OrderWines.Update(orderLineEntity);
+        _dbContext.OrderWines.Update(orderWineEntity);
     }
 }

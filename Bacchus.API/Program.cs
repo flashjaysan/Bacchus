@@ -1,5 +1,6 @@
 using Bacchus.Business;
 using Bacchus.Common.Entities;
+using Bacchus.Common.Mappings;
 using Bacchus.Common.Resources;
 using Bacchus.DataAccess;
 using Bacchus.DataAccess.DbContext;
@@ -48,7 +49,7 @@ builder.Services.AddScoped<BacchusDbContext>();
 
 builder.Services.AddMvc();
 builder.Services.AddCors();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(typeof(AddressMapping).Assembly);// le mapping n'est pas dans la couche API. Il faut référencer une des classes de la couche Common.
 builder.Services.AddDbContext<BacchusDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("BacchusDb"));

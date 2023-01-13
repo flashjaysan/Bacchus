@@ -1,5 +1,6 @@
 ﻿using Bacchus.Business;
 using Bacchus.Common.Resources;
+using Bacchus.Common.Resources.Order;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bacchus.API.Controllers;
@@ -28,7 +29,7 @@ public class OrderController : Controller
     }
 
     [HttpPost]
-    public async Task<OrderResource> Add([FromBody] OrderResource orderResource)
+    public async Task<OrderResource> Add([FromBody] OrderSaveResource orderResource)
     {
         return await _orderService.Add(orderResource);
     }

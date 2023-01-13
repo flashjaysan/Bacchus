@@ -4,6 +4,7 @@ using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
 using Bacchus.DataAccess.UnitOfWork.Repositories;
 using Bacchus.DataAccess.UnitOfWork;
+using Bacchus.Common.Core;
 
 namespace Bacchus.Service;
 
@@ -20,12 +21,14 @@ public class OrderStatusService : IService<OrderStatusResource>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<OrderStatusResource> Add(OrderStatusResource orderStatusResource)
+    public async Task<OrderStatusResource> Add(Resource orderStatusResource)
     {
+        var request = (OrderStatusResource)orderStatusResource;
         OrderStatusEntity newOrderStatus = _mapper.Map<OrderStatusEntity>(orderStatusResource);
         _repository.Add(newOrderStatus);
         await _unitOfWork.SaveIntoDbContextAsync();
-        return orderStatusResource;
+        var result = _mapper.Map<OrderStatusResource>(newOrderStatus);
+        return result;
     }
 
     public async Task Delete(int id)
@@ -54,7 +57,7 @@ public class OrderStatusService : IService<OrderStatusResource>
         return Task.FromResult(orderStatusResource);
     }
 
-    public async Task<OrderStatusResource> Update(OrderStatusResource orderStatusResource)
+    public async Task<OrderStatusResource> Update(Resource orderStatusResource)
     {
         OrderStatusEntity orderStatusEntity = _repository.GetOne(orderStatusResource.Id);
 

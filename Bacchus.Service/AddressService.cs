@@ -4,6 +4,7 @@ using Bacchus.Common.Entities;
 using Bacchus.Common.Resources;
 using Bacchus.DataAccess.UnitOfWork.Repositories;
 using Bacchus.DataAccess.UnitOfWork;
+using Bacchus.Common.Core;
 
 namespace Bacchus.Service;
 
@@ -20,12 +21,14 @@ public class AddressService : IService<AddressResource>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<AddressResource> Add(AddressResource addressResource)
+    public async Task<AddressResource> Add(Resource addressResource)
     {
+        var request = (AddressResource)addressResource;
         AddressEntity newAddress = _mapper.Map<AddressEntity>(addressResource);
         _repository.Add(newAddress);
         await _unitOfWork.SaveIntoDbContextAsync();
-        return addressResource;
+        var result = _mapper.Map<AddressResource>(newAddress);
+        return result;
     }
 
     public async Task Delete(int id)
@@ -54,7 +57,7 @@ public class AddressService : IService<AddressResource>
         return Task.FromResult(addressResource);
     }
 
-    public async Task<AddressResource> Update(AddressResource addressResource)
+    public async Task<AddressResource> Update(Resource addressResource)
     {
         AddressEntity addressEntity = _repository.GetOne(addressResource.Id);
 
